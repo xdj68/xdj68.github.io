@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>个人主页</title>
+  
+  <subtitle>许道杰</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://xdj68.github.io/"/>
+  <updated>2019-08-21T02:53:14.265Z</updated>
+  <id>https://xdj68.github.io/</id>
+  
+  <author>
+    <name>xudaojie</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown编辑阅读器常用语法</title>
+    <link href="https://xdj68.github.io/2019/08/20/Markdown%E7%BC%96%E8%BE%91%E9%98%85%E8%AF%BB%E5%99%A8%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/"/>
+    <id>https://xdj68.github.io/2019/08/20/Markdown编辑阅读器常用语法/</id>
+    <published>2019-08-20T11:43:29.000Z</published>
+    <updated>2019-08-21T02:53:14.265Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;欢迎使用-Cmd-Markdown-编辑阅读器&quot;&gt;&lt;a href=&quot;#欢迎使用-Cmd-Markdown-编辑阅读器&quot; class=&quot;headerlink&quot; title=&quot;欢迎使用 Cmd Markdown 编辑阅读器&quot;&gt;&lt;/a&gt;欢迎使用 Cmd
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Markdown" scheme="https://xdj68.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nexo官网常用构建指令</title>
+    <link href="https://xdj68.github.io/2019/07/25/Nexo%E5%AE%98%E7%BD%91%E5%B8%B8%E7%94%A8%E6%9E%84%E5%BB%BA%E6%8C%87%E4%BB%A4/"/>
+    <id>https://xdj68.github.io/2019/07/25/Nexo官网常用构建指令/</id>
+    <published>2019-07-25T07:22:36.000Z</published>
+    <updated>2019-08-21T02:53:10.032Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Nexo" scheme="https://xdj68.github.io/tags/Nexo/"/>
+    
+      <category term="Bash" scheme="https://xdj68.github.io/tags/Bash/"/>
+    
+      <category term="NodeJs" scheme="https://xdj68.github.io/tags/NodeJs/"/>
+    
+  </entry>
+  
+</feed>
