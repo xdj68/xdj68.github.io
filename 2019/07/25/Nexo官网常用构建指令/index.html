@@ -435,6 +435,24 @@
           
 
           
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2019/07/25/Nexo官网常用构建指令/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/07/25/Nexo官网常用构建指令/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
 
           <br>
           
@@ -577,6 +595,9 @@
 
           </div>
           
+  
+    
+    <div class="comments" id="comments"></div>
   
 
 
@@ -1207,6 +1228,34 @@ window.addEventListener("message", function(e) {
 
 
 
+
+  
+    
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '1RQSDzM4zCnQm60QGuSzRlFU-gzGzoHsz',
+    appKey: '0IhYi9gRa12WNyqPW5YpVOMg',
+    placeholder: 'Hello World',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-CN' || 'zh-cn'
+  });
+</script>
 
   
 
