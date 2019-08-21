@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xdj68.github.io/"/>
-  <updated>2019-08-21T08:50:46.494Z</updated>
+  <updated>2019-08-21T08:56:31.292Z</updated>
   <id>https://xdj68.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://xdj68.github.io/2019/08/20/Markdown%E7%BC%96%E8%BE%91%E9%98%85%E8%AF%BB%E5%99%A8%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/"/>
     <id>https://xdj68.github.io/2019/08/20/Markdown编辑阅读器常用语法/</id>
     <published>2019-08-20T11:43:29.000Z</published>
-    <updated>2019-08-21T08:50:46.494Z</updated>
+    <updated>2019-08-21T08:56:31.292Z</updated>
     
     <summary type="html">
     
@@ -52,8 +52,11 @@
 &lt;li&gt;&lt;input checked disabled type=&quot;checkbox&quot;&gt; &lt;p&gt;修复 LaTex 公式渲染问题&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;input checked disabled type=&quot;checkbox&quot;&gt; &lt;p&gt;新增 LaTex 公式编号功能&lt;/p&gt;
-&lt;p&gt;  - [ ] 支持以 PDF 格式导出文稿&lt;br&gt;  - [ ] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率&lt;br&gt;  - [x] 新增 Todo 列表功能&lt;br&gt;  - [x] 修复 LaTex 公式渲染问题&lt;br&gt;  - [x] 新增 LaTex 公式编号功能&lt;/p&gt;
-&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;- [ ] 支持以 PDF 格式导出文稿
+- [ ] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率
+- [x] 新增 Todo 列表功能
+- [x] 修复 LaTex 公式渲染问题
+- [x] 新增 LaTex 公式编号功能&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;2-书写一个质能守恒公式-LaTeX&quot;&gt;&lt;a href=&quot;#2-书写一个质能守恒公式-LaTeX&quot; class=&quot;headerlink&quot; title=&quot;2. 书写一个质能守恒公式[^LaTeX]&quot;&gt;&lt;/a&gt;2. 书写一个质能守恒公式[^LaTeX]&lt;/h3&gt;&lt;p&gt;$$E=mc^2$$&lt;/p&gt;
 &lt;h3 id=&quot;3-高亮一段代码-code&quot;&gt;&lt;a href=&quot;#3-高亮一段代码-code&quot; class=&quot;headerlink&quot; title=&quot;3. 高亮一段代码[^code]&quot;&gt;&lt;/a&gt;3. 高亮一段代码[^code]&lt;/h3&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@requires_authorization&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SomeClass&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;pass&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; __name__ == &lt;span class=&quot;string&quot;&gt;&#39;__main__&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;# A comment&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;hello world&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -88,6 +91,11 @@
 &lt;td align=&quot;center&quot;&gt;234&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;&lt;/table&gt;
+&lt;pre&gt;&lt;code&gt;| 项目        | 价格   |  数量  |
+| --------   | -----:  | :----:  |
+| 计算机     | \$1600 |   5     |
+| 手机        |   \$12   |   12   |
+| 管线        |    \$1    |  234  |&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
