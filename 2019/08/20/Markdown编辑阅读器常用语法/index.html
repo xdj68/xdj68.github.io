@@ -447,12 +447,6 @@
           
 
           
-            
-          
-            
-          
-            
-          
 
           <br>
           
@@ -671,6 +665,9 @@
 
           </div>
           
+  
+    
+    <div class="comments" id="gitalk-container"></div>
   
 
 
@@ -968,7 +965,7 @@
 
 
   
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.jshttps://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
   
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
@@ -1380,12 +1377,41 @@ window.addEventListener("message", function(e) {
 
   
     
+
+
   
-    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+
+
+
   
-    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+
+
+
   
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '451ffacecfbe7cd212ee',
+    clientSecret: 'f948984d53cf0160a3ad02fbd2c6aee9cf83ea90',
+    repo: 'https://xdj68.github.io',
+    owner: 'xdj68',
+    admin: ['xdj68'],
+    id: md5(location.pathname),
     
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+
   
 
 </body>
