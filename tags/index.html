@@ -664,14 +664,26 @@
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
   <script>
     
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
     
       flOptions = {};
       
-        flOptions.iconStyle = "box";
+        flOptions.iconStyle = "default";
       
-        flOptions.boxForm = "horizontal";
+        flOptions.boxForm = "vertical";
       
-        flOptions.position = "middleRight";
+        flOptions.position = "middleLeft";
       
         flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
       
