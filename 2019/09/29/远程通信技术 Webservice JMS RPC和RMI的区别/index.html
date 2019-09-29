@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="个人主页">
 <meta property="og:description" content="远程通信技术 Webservice JMS RPC和RMI的区别 一、RMI 远程方法调用RMI（Remote Method Invocation）远程方法调用。能够让在客户端Java虚拟机上的对象像调用本地对象一样调用服务端java 虚拟机中的对象上的方法。使用代表：EJB RMI远方法程调用步骤：  1、客户调用客户端辅助对象stub上的方法 2、客户端辅助对象stub打包调用信息（变量、方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-29T09:42:11.136Z">
+<meta property="og:updated_time" content="2019-09-29T10:10:27.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="远程通信技术 Webservice JMS RPC和RMI的区别">
 <meta name="twitter:description" content="远程通信技术 Webservice JMS RPC和RMI的区别 一、RMI 远程方法调用RMI（Remote Method Invocation）远程方法调用。能够让在客户端Java虚拟机上的对象像调用本地对象一样调用服务端java 虚拟机中的对象上的方法。使用代表：EJB RMI远方法程调用步骤：  1、客户调用客户端辅助对象stub上的方法 2、客户端辅助对象stub打包调用信息（变量、方法">
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="创建时间：2019-09-29 19:40:20 / 修改时间：17:42:11" itemprop="dateCreated datePublished" datetime="2019-09-29T19:40:20+08:00">2019-09-29</time>
+              <time title="创建时间：2019-09-29 19:40:20 / 修改时间：18:10:27" itemprop="dateCreated datePublished" datetime="2019-09-29T19:40:20+08:00">2019-09-29</time>
             </span>
           
 
@@ -513,54 +513,43 @@
 <li>3、JMS：Java 消息服务(Java Messaging Service) 是一种允许应用程序创建、发送、接受和读取消息的Java API。JMS 在其中扮演的角色与JDBC 很相似，正如 JDBC 提供了一套用于访问各种不同关系数据库的公共API，JMS 也提供了独立于特定厂商的企业消息系统访问方式。<br>使用JMS 的应用程序被称为JMS客户端，处理消息路由与传递的消息系统被称为 JMS Provider，而JMS 应用则是由多个JMS 客户端和一个 JMS Provider 构成的业务系统。发送消息的JMS 客户端被称为生产者(producer)，而接收消息的JMS 客户端则被称为消费者(consumer)。同一JMS 客户端既可以是生产者也可以是消费者。<br>JMS 的编程过程很简单，概括为：应用程序A 发送一条消息到消息服务器(也就是JMS Provider)的某个目的地(Destination)，然后消息服务器把消息转发给应用程序B。因为应用程序A 和应用程序B 没有直接的代码关连，所以两者实现了解偶。</li>
 </ul>
 </blockquote>
+<hr>
 <blockquote>
 <ul>
-<li>RMI和JMS的区别：<blockquote>
-<ul>
+<li>RMI和JMS的区别：</li>
 <li>1、传输方式上<br>JMS 与 RMI 的区别在于：采用 JMS 服务，对象是在物理上被异步从网络的某个 JVM 上直接移动到另一个 JVM 上（是消息通知机制）。<br>RMI 对象是绑定在本地 JVM 中，只有函数参数和返回值是通过网络传送的（是请求应答机制）。</li>
 <li>2、方法调用上<br>RMI 一般都是同步的，也就是说，当client端调用Server端的一个方法的时候，需要等到对方的返回，才能继续执行client端，这个过程跟调用本地方法感觉上是一样的，这也是RMI的一个特点。<br>JMS 一般只是一个点发出一个Message到Message Server端，发出之后一般不会关心谁用了这个message。<br>一般RMI的应用是紧耦合，JMS的应用相对来说是松散耦合的应用。</li>
 </ul>
 </blockquote>
-</li>
-</ul>
-</blockquote>
+<hr>
 <blockquote>
 <ul>
-<li>RPC与RMI的区别<blockquote>
-<ul>
+<li>RPC与RMI的区别</li>
 <li>（1）RPC 跨语言，而 RMI只支持Java。</li>
 <li>（2）RMI 调用远程对象方法，允许方法返回 Java 对象以及基本数据类型，而RPC 不支持对象的概念，传送到 RPC 服务的消息由外部数据表示 (External Data Representation, XDR) 语言表示，这种语言抽象了字节序类和数据类型结构之间的差异。只有由 XDR 定义的数据类型才能被传递， 可以说 RMI 是面向对象方式的 Java RPC 。</li>
 <li>（3）在方法调用上，RMI中，远程接口使每个远程方法都具有方法签名。如果一个方法在服务器上执行，但是没有相匹配的签名被添加到这个远程接口上，那么这个新方法就不能被RMI客户方所调用。在RPC中，当一个请求到达RPC服务器时，这个请求就包含了一个参数集和一个文本值，通常形成“classname.methodname”的形式。这就向RPC服务器表明，被请求的方法在为 “classname”的类中，名叫“methodname”。然后RPC服务器就去搜索与之相匹配的类和方法，并把它作为那种方法参数类型的输入。这里的参数类型是与RPC请求中的类型是匹配的。一旦匹配成功，这个方法就被调用了，其结果被编码后返回客户方。</li>
 </ul>
 </blockquote>
-</li>
-</ul>
-</blockquote>
+<hr>
 <blockquote>
 <ul>
-<li>Webservice与RMI的区别<blockquote>
-<ul>
+<li>Webservice与RMI的区别</li>
 <li>（1）RMI是在tcp协议上传递可序列化的java对象，只能用在java虚拟机上，绑定语言，客户端和服务端都必须是java</li>
 <li>（2）webservice没有这个限制，webservice是在http协议上传递xml文本文件，与语言和平台无关</li>
 </ul>
 </blockquote>
-</li>
-</ul>
-</blockquote>
+<hr>
 <blockquote>
 <ul>
-<li>Webservice与JMS的区别<blockquote>
-<ul>
-<li>（1）Webservice专注于远程服务调用，jms专注于信息交换。</li>
+<li>Webservice与JMS的区别</li>
+<li>（（1）Webservice专注于远程服务调用，jms专注于信息交换。</li>
 <li>（2）大多数情况下Webservice是两系统间的直接交互（Consumer &lt;–&gt; Producer），而大多数情况下jms是三方系统交互（Consumer &lt;- Broker -&gt; Producer）。当然，JMS也可以实现request-response模式的通信，只要Consumer或Producer其中一方兼任broker即可。</li>
 <li>（3）JMS可以做到异步调用完全隔离了客户端和服务提供者，能够抵御流量洪峰； WebService服务通常为同步调用，需要有复杂的对象转换，相比SOAP，现在JSON，rest都是很好的http架构方案；（举一个例子，电子商务的分布式系统中，有支付系统和业务系统，支付系统负责用户付款，在用户在银行付款后需要通知各个业务系统，那么这个时候，既可以用同步也可以用异步，使用异步的好处就能抵御网站暂时的流量高峰，或者能应对慢消费者。</li>
 <li>（4）JMS是java平台上的消息规范。一般jms消息不是一个xml，而是一个java对象，很明显，jms没考虑异构系统，说白了，JMS就没考虑非java的东西。但是好在现在大多数的jms provider（就是JMS的各种实现产品）都解决了异构问题。相比WebService的跨平台各有千秋吧。</li>
 </ul>
 </blockquote>
-</li>
-</ul>
-</blockquote>
-<p>————————————————<br>版权声明：本文为腾讯云博主「黑泽君」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://cloud.tencent.com/developer/article/1353191" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1353191</a></p>
+<hr>
+<p>版权声明：本文为腾讯云博主「黑泽君」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。<br>原文链接：！<a href="https://cloud.tencent.com/developer/article/1353191" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1353191</a></p>
 
       
     </div>
