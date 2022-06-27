@@ -28,7 +28,7 @@
 <meta property="og:description" content="远程通信技术 Webservice JMS RPC和RMI的区别 一、RMI 远程方法调用RMI（Remote Method Invocation）远程方法调用。能够让在客户端Java虚拟机上的对象像调用本地对象一样调用服务端java 虚拟机中的对象上的方法。使用代表：EJB RMI远方法程调用步骤： 1、客户调用客户端辅助对象stub上的方法 2、客户端辅助对象stub打包调用信息（变量、方法名">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-09-29T11:40:20.000Z">
-<meta property="article:modified_time" content="2022-06-27T17:51:23.573Z">
+<meta property="article:modified_time" content="2022-06-27T17:55:46.090Z">
 <meta property="article:author" content="许道杰">
 <meta property="article:tag" content="RPC">
 <meta property="article:tag" content="RMI">
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-28 01:51:23" itemprop="dateModified" datetime="2022-06-28T01:51:23+08:00">2022-06-28</time>
+                <time title="修改时间：2022-06-28 01:55:46" itemprop="dateModified" datetime="2022-06-28T01:55:46+08:00">2022-06-28</time>
               </span>
 
           
@@ -305,6 +305,8 @@
 <li><p>3、调用结果的返回形式不同：<br>RMI是面向对象的，Java是面向对象的，所以RMI的调用结果可以是对象类型或者基本数据类型。<br>RPC的结果统一由外部数据表示(External Data Representation,XDR)语言表示，这种语言抽象了字节序类和数据类型结构之间的差异。只有由XDR定义的数据类型才能被传递，可以说RMI是面向对象方式的Java RPC。</p>
 </li>
 </ul>
+<span id="more"></span>
+
 <h4 id="四、附录"><a href="#四、附录" class="headerlink" title="四、附录"></a>四、附录</h4><ul>
 <li><p>RPC（Remote Procedure Call Protocol）远程过程调用协议，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC不依赖于具体的网络传输协议，tcp、udp等都可以。<br>由于存在各式各样的变换和细节差异，相应的RPC也派生出了各式远程过程通信协议。RPC是跨语言的通信标准，SUN和微软都有其实现，比如：RMI可以被看作SUN对RPC的Java版本（实现），而微软的DCOM就是建立在ORPC协议之上。<br>一言以蔽之，RPC是协议，而无论是SUN的RMI还是微软的DCOM都是对该协议的不同实现，二者都为编程人员提供了应用PRC技术的程序接口（API）。</p>
 </li>

@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-06-28 01:40:14 / 修改时间：01:47:20" itemprop="dateCreated datePublished" datetime="2022-06-28T01:40:14+08:00">2022-06-28</time>
+              <time title="创建时间：2022-06-28 01:40:14 / 修改时间：01:56:21" itemprop="dateCreated datePublished" datetime="2022-06-28T01:40:14+08:00">2022-06-28</time>
             </span>
 
           
@@ -283,140 +283,14 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo 安装hexo</span><br><span class="line">hexo -v    查看hexo版本</span><br><span class="line">hexo init Blog  Blog文件夹中初始化hexo</span><br><span class="line">cd Blog   进入Blog 文件夹</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next git下载next主题</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="三-hexo配置发布和next主题配置"><a href="#三-hexo配置发布和next主题配置" class="headerlink" title="三.hexo配置发布和next主题配置"></a>三.hexo配置发布和next主题配置</h1><h2 id="1-hexo文章发布"><a href="#1-hexo文章发布" class="headerlink" title="1.hexo文章发布"></a>1.hexo文章发布</h2><p>hexo 支持markdown文件的渲染并以html格式在/Blog/public文件夹内生成相应文件<br>markdown文件编辑器推荐 <strong>Typora</strong><br>写完博客后只要将文件后缀为.md文件复制到/Blog/source/ _posts 中即可<br>hexo 配置发布主要以下命令</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>hexo generate  或 hexo g</td>
-<td>生成静态文件</td>
-</tr>
-<tr>
-<td>hexo server 或者 hexo s</td>
-<td>启动hexo服务，默认情况下，访问网址为： <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a></td>
-</tr>
-<tr>
-<td>hexo deploy 或者hexo d</td>
-<td>部署静态文件</td>
-</tr>
-<tr>
-<td>hexo clean</td>
-<td>清除缓存文件 (db.json) 和已生成的静态文件 (public) 在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令</td>
-</tr>
-</tbody></table>
-<h2 id="2-hexo主题配置"><a href="#2-hexo主题配置" class="headerlink" title="2.hexo主题配置"></a>2.hexo主题配置</h2><p><strong>参考官网</strong>： <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
-<p><strong>Site</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title:  主标题</span><br><span class="line">subtitle:  副标题</span><br><span class="line">description:  描述</span><br><span class="line">keywords: 关键字</span><br><span class="line">author:  作者</span><br><span class="line">language: 语言</span><br><span class="line">timezone:  时区</span><br></pre></td></tr></table></figure>
-
-
-<p> <strong>Extensions</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-next主题配置"><a href="#3-next主题配置" class="headerlink" title="3.next主题配置"></a>3.next主题配置</h2><p><strong>参考github</strong>：<a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">https://github.com/iissnan/hexo-theme-next</a><br>        &nbsp;   &nbsp;   &nbsp;     &nbsp;   &nbsp;   &nbsp;     &nbsp;   &nbsp;   &nbsp;     &nbsp;   &nbsp;                       <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
-<p> <strong>主题配置</strong></p>
-<p> <strong>主题配置</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<p> 我用的Muse主题，因为左侧导栏可以随屏幕自动调节，并且可以展开隐藏，原来是Gemini主题突然发现Muse也很nice✌✌</p>
-<p><strong>菜单栏配置</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  commonweal: /<span class="number">404</span>/ || fa fa-heartbeat</span><br><span class="line">  about: /about/ || fa fa-user</span><br></pre></td></tr></table></figure>
-
-<p>这个和我原配置稍许不同，研究半天才发现原来配置不显示菜单图标，后来看了下备注低版本配置没有fa fa-前缀😅😅</p>
-<p><strong>侧栏头像</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  url:  /images/favicon.jpeg    自定义头像文件放置在主题的\next\source\images文件夹中</span><br><span class="line">  rounded: false</span><br><span class="line">  rotated: false</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>社交</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  GitHub: xxxx ||  fab fa-github</span><br><span class="line">  E-Mail:xxxx || fa fa-envelope</span><br><span class="line">  Weibo:xxxx || fab fa-weibo</span><br><span class="line">  Twitter:xxxx || fab fa-twitter</span><br><span class="line">  social_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  icons_only: false</span><br><span class="line">  transition: false</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>打赏</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reward_settings:</span><br><span class="line">  enable: true</span><br><span class="line">  animation: true</span><br><span class="line"></span><br><span class="line">reward:</span><br><span class="line">  wechatpay: /images/wechatpay.png            微信支付文件放置在主题的\next\source\images文件夹中</span><br><span class="line">  alipay: /images/alipay.jpg                  支付宝支付文件放置在主题的\next\source\images文件夹中</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="4-hexo-迁移"><a href="#4-hexo-迁移" class="headerlink" title="4.hexo 迁移"></a>4.hexo 迁移</h2><p>迁移只要用原来的以下hexo 文件覆盖hexo init Blog下的相应文件即可</p>
-<table>
-<thead>
-<tr>
-<th>配置文件</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>_config.yml</td>
-<td>hexo的配置文件</td>
-</tr>
-<tr>
-<td>theme/</td>
-<td>博客主题文件</td>
-</tr>
-<tr>
-<td>source/</td>
-<td>博客文章源文件.md</td>
-</tr>
-<tr>
-<td>scaffold/</td>
-<td>博客模板文件</td>
-</tr>
-<tr>
-<td>package.json</td>
-<td>npm依赖包</td>
-</tr>
-<tr>
-<td>.gitignore</td>
-<td>Git提交忽略文件</td>
-</tr>
-</tbody></table>
-<hr>
-<h1 id="四-next主题自定义配置"><a href="#四-next主题自定义配置" class="headerlink" title="四.next主题自定义配置"></a>四.next主题自定义配置</h1><p><strong>参考github</strong>：  <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a><br>   &nbsp;   &nbsp;    &nbsp;   &nbsp;    &nbsp;   &nbsp;    &nbsp;   &nbsp;    &nbsp;   &nbsp;    &nbsp;  github登上小手一动先点个⭐哎，很舒服！  点击  more example here  根据自己喜好添加相应的插件</p>
-<p>  个人主页</p>
-<h2 id="1-添加日历"><a href="#1-添加日历" class="headerlink" title="1 添加日历"></a>1 添加日历</h2><p>  📆 <strong>theme-next-calendar: 一个简洁的hexo-next日历云插件</strong></p>
-<p> 首先安装hexo插件</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install theme-next/theme-next-calendar</span><br></pre></td></tr></table></figure>
-
-<p> 在next主题配置文件_config.yml配置</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CloudCalendar:</span><br><span class="line">  enable: true</span><br><span class="line">  language: zh-CN</span><br><span class="line">  single: true</span><br><span class="line">  root: /calendar/</span><br><span class="line">  calendarCdn: //cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js</span><br><span class="line">  langCdn: //cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js</span><br><span class="line">  #disableSidebar: false</span><br></pre></td></tr></table></figure>
-
-
-<p>备注：按照作者配置发现网页报错，错误信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">calendar.min.js:1 Uncaught ReferenceError: jQuery is not defined</span><br><span class="line">     at calendar.min.js:1</span><br></pre></td></tr></table></figure>
-
-<p>由于缺少jquery文件，页面无法显示，这个简单，直接补上！<br>  进入 \Blog\themes\next\layout_scripts 中 vendors.swig 添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- set js_vendors = js_vendors | attr(&#x27;jquery&#x27;, &#x27;jquery-3.2.1.min.js&#x27;) %&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 进入  H:\Github\Blog\themes\next\source\lib 添加下载的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jquery-3.2.1.min.js</span><br></pre></td></tr></table></figure>
-<h2 id="2-添加共享服务"><a href="#2-添加共享服务" class="headerlink" title="2 添加共享服务"></a>2 添加共享服务</h2><p>   🎁 <strong>hexo-next-share: NexT 的内容共享服务</strong><br>我用的sharejs的分享，因为比较好看😄😄</p>
-<p> 首先安装hexo插件</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install theme-next/hexo-next-share</span><br></pre></td></tr></table></figure>
-
-<p> 在next主题配置文件_config.yml配置</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sharejs:</span><br><span class="line">  enable: true</span><br><span class="line">  cdn:</span><br><span class="line">    js: //cdn.jsdelivr.net/npm/social-share.js@<span class="number">1.0</span>.<span class="number">16</span>/dist/js/social-share.min.js</span><br><span class="line">    css: //cdn.jsdelivr.net/npm/social-share.js@<span class="number">1.0</span>.<span class="number">16</span>/dist/css/share.min.css</span><br><span class="line">  networks: weibo,wechat,qzone,facebook,twitter,google</span><br><span class="line">  wechat_qrcode:</span><br><span class="line">    title: 请打开微信扫一扫</span><br><span class="line">    prompt: </span><br></pre></td></tr></table></figure>
-
-<p>备注： 配置QQ分享的话页面会报二维码的长度过长js错误，百度修改下js参数就行了，因为老了不用QQ算了不改了~~</p>
-<h2 id="3-添加-valine用户评论系统"><a href="#3-添加-valine用户评论系统" class="headerlink" title="3 添加 valine用户评论系统"></a>3 添加 valine用户评论系统</h2><p>原来用的gtalk需要登录github才能评论现换成valine评论系统，具体操作详见以下作者文章<br><strong>Hexo 集成 Valine 评论系统</strong> <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b9e73c881729">https://www.jianshu.com/p/b9e73c881729</a><br>备注：原来的Leancloud长时间不用需要激活，激活了N天没反应算了直接删除应用直接创建个新的应用，反正也没数据😅😅</p>
-<h2 id="4-添加透明泡泡漂浮动态背景"><a href="#4-添加透明泡泡漂浮动态背景" class="headerlink" title="4 添加透明泡泡漂浮动态背景"></a>4 添加透明泡泡漂浮动态背景</h2><p>背景白色的太枯燥了，动态背景中发现了透明泡泡浮动背景很不错立马就借鉴下修改下博客的css背景样式✌✌<br>\next\layout_layout.swig 文件中新增标签</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;bg-bubbles&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>   \next\source\css\main.styl 中新增背景布局</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  // Background Layer</span><br><span class="line">  // -------------------------------------------------</span><br><span class="line">@import &quot;_background.styl&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>\next\source\css  文件夹中新增 _background.styl 布局样式</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-class">.container</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ffffff</span>;</span><br><span class="line">      </span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(to left, <span class="number">#becdd3</span> <span class="number">0%</span>, <span class="number">#ffffff</span> <span class="number">30%</span>,<span class="number">#ffffff</span> <span class="number">50%</span>, <span class="number">#becdd3</span> <span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to left, <span class="number">#becdd3</span> <span class="number">0%</span>, <span class="number">#ffffff</span> <span class="number">33%</span>,<span class="number">#ffffff</span> <span class="number">67%</span>, <span class="number">#becdd3</span> <span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.8</span>;</span><br><span class="line"> </span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.sidebar</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.902</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">list-style</span>: none;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.15</span>);</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">15%</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: square <span class="number">25s</span> infinite;</span><br><span class="line">  <span class="attribute">animation</span>: square <span class="number">25s</span> infinite;</span><br><span class="line">  -webkit-<span class="attribute">transition-timing-function</span>: linear;</span><br><span class="line">  <span class="attribute">transition-timing-function</span>: linear;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">2%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-duration</span>: <span class="number">40s</span>;</span><br><span class="line">  <span class="attribute">animation-duration</span>: <span class="number">40s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">5%</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-delay</span>: <span class="number">10s</span>;</span><br><span class="line">          <span class="attribute">animation-delay</span>: <span class="number">10s</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-duration</span>: <span class="number">40s</span>;</span><br><span class="line">          <span class="attribute">animation-duration</span>: <span class="number">40s</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>) &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">13%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-delay</span>: <span class="number">10s</span>;</span><br><span class="line">          <span class="attribute">animation-delay</span>: <span class="number">10s</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-duration</span>: <span class="number">30s</span>;</span><br><span class="line">          <span class="attribute">animation-duration</span>: <span class="number">30s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">4</span>) &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">18%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.25</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">5</span>) &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">20%</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-delay</span>: <span class="number">15s</span>;</span><br><span class="line">          <span class="attribute">animation-delay</span>: <span class="number">15s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">6</span>) &#123;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">2%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-delay</span>: <span class="number">2s</span>;</span><br><span class="line">          <span class="attribute">animation-delay</span>: <span class="number">2s</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-duration</span>: <span class="number">50s</span>;</span><br><span class="line">          <span class="attribute">animation-duration</span>: <span class="number">50s</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">7</span>) &#123;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">15%</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-delay</span>: <span class="number">5s</span>;</span><br><span class="line">          <span class="attribute">animation-delay</span>: <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">8</span>) &#123;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">12%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-duration</span>: <span class="number">20s</span>;</span><br><span class="line">          <span class="attribute">animation-duration</span>: <span class="number">20s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">9</span>) &#123;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">20%</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-delay</span>: <span class="number">2s</span>;</span><br><span class="line">          <span class="attribute">animation-delay</span>: <span class="number">2s</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-duration</span>: <span class="number">60s</span>;</span><br><span class="line">          <span class="attribute">animation-duration</span>: <span class="number">60s</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-bubbles</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(<span class="number">10</span>) &#123;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">20%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">160px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">160px</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation-delay</span>: <span class="number">2s</span>;</span><br><span class="line">          <span class="attribute">animation-delay</span>: <span class="number">2s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> square &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">700px</span>) <span class="built_in">rotate</span>(<span class="number">600deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">700px</span>) <span class="built_in">rotate</span>(<span class="number">600deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> square &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">700px</span>) <span class="built_in">rotate</span>(<span class="number">600deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">700px</span>) <span class="built_in">rotate</span>(<span class="number">600deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>备注：虽然以前调过html css样式不过都是老的css样式，新的css3真没调过只能依葫芦画瓢调整按照页面版面调整下位置速度和延时😅😅</p>
-<h2 id="5-添加git远程部署"><a href="#5-添加git远程部署" class="headerlink" title="5 添加git远程部署"></a>5 添加git远程部署</h2><p>  首先安装hexo插件</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git <span class="attr">--save</span></span><br></pre></td></tr></table></figure>
-<p>\Blog\_config,yml配置github主页地址</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy</span>:</span><br><span class="line"> <span class="attr">type</span>: git</span><br><span class="line"> <span class="attr">repo</span>: <span class="attr">https</span>:<span class="comment">//token@github.com/xdj68/xdj68.github.io.git</span></span><br><span class="line"> <span class="attr">branch</span>: master</span><br></pre></td></tr></table></figure>
-
-<p>备注：git远程部署文档 <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment">https://hexo.io/docs/one-command-deployment</a><br><strong>部署您的站点hexo clean &amp;&amp; hexo deploy。除非您使用令牌或 ssh 密钥进行身份验证，否则系统将提示您输入目标存储库的用户名和密码。hexo-deployer-git 不存储您的用户名和密码。使用git-credential-cache临时存储它们。</strong></p>
-<p>API可见github三种验证方式：用户名密码，token，SSH，SSH  SSH 需要git生成公钥  token需要github生成token。因为原配置用户名密码的配置不跳用户名密码输入，按照文档git-credential-cache命令应该可以，正好用github新token验证方式部署。具体参考一下作者<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465182461">https://zhuanlan.zhihu.com/p/465182461</a>(友情提醒：token只能第一次看见，赶紧生成保存下，图上repo参数中token填github上生成的ghp_xxxxxxxxxxxxxxxxxx开头的鉴权码就可以了😄😄)</p>
-<p>暂时配置这么多以后有新的配置再加。下篇应该要写设计模式或者JVM虚拟机了，毕竟看书不总结等于白看！！<br>工作搬砖简单坚持写博客难，希望能够坚持有时间写一写文章，积累下遇到的问题和解决方式以及知识点总结！！<br><strong>我的github主页地址 <a href="https://xdj68.github.io/">https://xdj68.github.io</a></strong>    </p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/28/Hexo%E8%BF%81%E7%A7%BB%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7+nvm%E7%AE%A1%E7%90%86nodejs%E7%89%88%E6%9C%AC%E9%85%8D%E7%BD%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -466,7 +340,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-28 01:49:59" itemprop="dateModified" datetime="2022-06-28T01:49:59+08:00">2022-06-28</time>
+                <time title="修改时间：2022-06-28 01:55:32" itemprop="dateModified" datetime="2022-06-28T01:55:32+08:00">2022-06-28</time>
               </span>
 
           
@@ -515,17 +389,14 @@
 <p>“China always emphasizes that both sides should peacefully settle their differences through dialogue and consultation, and confrontation won’t benefit either side,” he told reporters in Beijing, adding that he hopes the two sides can reach consensus on disengagement as soon as possible.</p>
 <p>The incident came three days after the two countries’ defense ministers met in Moscow and agreed to deescalate the border situation.</p>
 <p>During their meeting, Chinese State Councilor and Defense Minister Wei Fenghe stressed that China cannot lose one inch of its territory and that Chinese troops are completely determined, able and ready to safeguard its sovereignty and territorial integrity.</p>
-<hr>
-<h1 id="我的翻译-中国人民解放军在边境地区开火后的回应"><a href="#我的翻译-中国人民解放军在边境地区开火后的回应" class="headerlink" title="[我的翻译] 中国人民解放军在边境地区开火后的回应"></a>[我的翻译] 中国人民解放军在边境地区开火后的回应</h1><h2 id="印度被督促停止危险行为-撤回非法入侵军队"><a href="#印度被督促停止危险行为-撤回非法入侵军队" class="headerlink" title="印度被督促停止危险行为, 撤回非法入侵军队"></a>印度被督促停止危险行为, 撤回非法入侵军队</h2><p>印度再次非法入侵中国西藏边境班公湖南部地区并鸣枪开火，中国人民解放军西部战区发言人表示这严重违反了中印俩国的沟通协商成果，加剧俩国紧张的边境形势。张发言人要求印军立刻撤出入侵的中方地区并严格限制印军，控制军人越境开火行为并保证不再发生类似事件，最后强调希望通过沟通和交流解决边境纠纷达成共识。</p>
-<h2 id="词汇积累"><a href="#词汇积累" class="headerlink" title="词汇积累"></a>词汇积累</h2><ul>
-<li>1 trespass        vi  非法入侵</li>
-<li>2 provocation     n   挑衅</li>
-<li>3 sovereignty     n   主权</li>
-<li>4 integrity       n   完整</li>
-</ul>
-<hr>
-<p>原文链接：<a target="_blank" rel="noopener" href="http://www.chinadaily.com.cn/a/202009/09/WS5f5813d2a310675eafc585bb.html">http://www.chinadaily.com.cn/a/202009/09/WS5f5813d2a310675eafc585bb.html</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/09/%E5%9B%BD%E9%99%85%E6%96%B0%E9%97%BB%E9%80%9F%E9%80%92_20200909/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -575,7 +446,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-28 01:51:23" itemprop="dateModified" datetime="2022-06-28T01:51:23+08:00">2022-06-28</time>
+                <time title="修改时间：2022-06-28 01:55:46" itemprop="dateModified" datetime="2022-06-28T01:55:46+08:00">2022-06-28</time>
               </span>
 
           
@@ -652,58 +523,14 @@
 <li><p>3、调用结果的返回形式不同：<br>RMI是面向对象的，Java是面向对象的，所以RMI的调用结果可以是对象类型或者基本数据类型。<br>RPC的结果统一由外部数据表示(External Data Representation,XDR)语言表示，这种语言抽象了字节序类和数据类型结构之间的差异。只有由XDR定义的数据类型才能被传递，可以说RMI是面向对象方式的Java RPC。</p>
 </li>
 </ul>
-<h4 id="四、附录"><a href="#四、附录" class="headerlink" title="四、附录"></a>四、附录</h4><ul>
-<li><p>RPC（Remote Procedure Call Protocol）远程过程调用协议，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC不依赖于具体的网络传输协议，tcp、udp等都可以。<br>由于存在各式各样的变换和细节差异，相应的RPC也派生出了各式远程过程通信协议。RPC是跨语言的通信标准，SUN和微软都有其实现，比如：RMI可以被看作SUN对RPC的Java版本（实现），而微软的DCOM就是建立在ORPC协议之上。<br>一言以蔽之，RPC是协议，而无论是SUN的RMI还是微软的DCOM都是对该协议的不同实现，二者都为编程人员提供了应用PRC技术的程序接口（API）。</p>
-</li>
-<li><p>RMI是Java的一组拥护开发分布式应用程序的API。RMI使用Java语言接口定义了远程对象，它集合了Java序列化和Java远程方法协议(Java Remote Method Protocol)。简单地说，这样使原先的程序在同一操作系统的方法调用，变成了不同操作系统之间程序的方法调用，由于J2EE是分布式程序平台，它以RMI机制实现了程序组件在不同操作系统之间的通信。<br>比如，一个EJB可以通过RMI调用Web上另一台机器上的EJB远程方法。<br>RMI（Remote Method Invocation，远程方法调用）是用Java在JDK1.1中实现的，它大大增强了Java开发分布式应用的能力。</p>
-</li>
-<li><p>Java作为一种风靡一时的网络开发语言，其巨大的威力就体现在它强大的开发分布式网络应用的能力上，而RMI就是开发百分之百纯Java的网络分布式应用系统的核心解决方案之一。其实RMI可以被看作是RPC的Java版本（实现）。<br>传统RPC并不能很好地应用于分布式对象系统，而Java RMI 则支持存储于不同地址空间的程序级对象之间彼此进行通信，实现远程对象之间的无缝远程调用。<br>RMI目前使用Java远程消息交换协议（JRMP，Java Remote Messaging Protocol）进行通信。JRMP是专为Java的远程对象制定的协议。因此，Java RMI具有Java的“Write Once，Run Anywhere”的优点，是分布式应用系统的百分之百纯Java解决方案。用Java RMI开发的应用系统可以部署在任何支持JRE（Java Run Environment Java，Java运行环境）的平台上。但由于JRMP是专为Java对象制定的，因此，RMI对于用非Java语言开发的应用系统的支持不足。不能与用非Java语言书写的对象进行通信。</p>
-</li>
-<li><p>Hadoop作为一个存储与服务的基础性平台，同时它的内部有采用了master/slave架构，那么其内部通信和与客户端的交互就是必不可少的了。Hadoop在实现时抛弃了JDK自带的一个RPC实现–RMI，而自己基于IPC模型实现了一个更高效的轻量级RPC。</p>
-</li>
-<li><p>RMI的局限性之一：RMI对服务器的IP地址和端口依赖很紧密，但是在开发的时候不知道将来的服务器IP和端口如何，但是客户端程序依赖这个IP和端口。这个问题有两种解决途径：一是通过DNS来解决，二是通过封装将IP暴露到程序代码之外。注意：我们在实际开发中，我们是知道服务器IP和端口的。<br>RMI的局限性之二：是RMI是Java语言的远程调用，两端的程序语言必须是Java实现，对于不同语言间的通讯可以考虑用WebService或者公用对象请求代理体系（CORBA）来实现。</p>
-</li>
-<li><p>3、JMS：Java 消息服务(Java Messaging Service) 是一种允许应用程序创建、发送、接受和读取消息的Java API。JMS 在其中扮演的角色与JDBC 很相似，正如 JDBC 提供了一套用于访问各种不同关系数据库的公共API，JMS 也提供了独立于特定厂商的企业消息系统访问方式。<br>使用JMS 的应用程序被称为JMS客户端，处理消息路由与传递的消息系统被称为 JMS Provider，而JMS 应用则是由多个JMS 客户端和一个 JMS Provider 构成的业务系统。发送消息的JMS 客户端被称为生产者(producer)，而接收消息的JMS 客户端则被称为消费者(consumer)。同一JMS 客户端既可以是生产者也可以是消费者。<br>JMS 的编程过程很简单，概括为：应用程序A 发送一条消息到消息服务器(也就是JMS Provider)的某个目的地(Destination)，然后消息服务器把消息转发给应用程序B。因为应用程序A 和应用程序B 没有直接的代码关连，所以两者实现了解偶。</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>RMI和JMS的区别：<ul>
-<li>1、传输方式上<br>JMS 与 RMI 的区别在于：采用 JMS 服务，对象是在物理上被异步从网络的某个 JVM 上直接移动到另一个 JVM 上（是消息通知机制）。<br>RMI 对象是绑定在本地 JVM 中，只有函数参数和返回值是通过网络传送的（是请求应答机制）。</li>
-<li>2、方法调用上<br>RMI 一般都是同步的，也就是说，当client端调用Server端的一个方法的时候，需要等到对方的返回，才能继续执行client端，这个过程跟调用本地方法感觉上是一样的，这也是RMI的一个特点。<br>JMS 一般只是一个点发出一个Message到Message Server端，发出之后一般不会关心谁用了这个message。<br>一般RMI的应用是紧耦合，JMS的应用相对来说是松散耦合的应用。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>RPC与RMI的区别<ul>
-<li>（1）RPC 跨语言，而 RMI只支持Java。</li>
-<li> (2）RMI 调用远程对象方法，允许方法返回 Java 对象以及基本数据类型，而RPC 不支持对象的概念，传送到 RPC 服务的消息由外部数据表示 (External Data Representation, XDR) 语言表示，这种语言抽象了字节序类和数据类型结构之间的差异。只有由 XDR 定义的数据类型才能被传递， 可以说 RMI 是面向对象方式的 Java RPC 。</li>
-<li>（3）在方法调用上，RMI中，远程接口使每个远程方法都具有方法签名。如果一个方法在服务器上执行，但是没有相匹配的签名被添加到这个远程接口上，那么这个新方法就不能被RMI客户方所调用。在RPC中，当一个请求到达RPC服务器时，这个请求就包含了一个参数集和一个文本值，通常形成“classname.methodname”的形式。这就向RPC服务器表明，被请求的方法在为 “classname”的类中，名叫“methodname”。然后RPC服务器就去搜索与之相匹配的类和方法，并把它作为那种方法参数类型的输入。这里的参数类型是与RPC请求中的类型是匹配的。一旦匹配成功，这个方法就被调用了，其结果被编码后返回客户方。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>Webservice与RMI的区别<ul>
-<li>（1）RMI是在tcp协议上传递可序列化的java对象，只能用在java虚拟机上，绑定语言，客户端和服务端都必须是java</li>
-<li>（2）webservice没有这个限制，webservice是在http协议上传递xml文本文件，与语言和平台无关</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>Webservice与JMS的区别<ul>
-<li>（1）Webservice专注于远程服务调用，jms专注于信息交换。</li>
-<li>（2）大多数情况下Webservice是两系统间的直接交互（Consumer &lt;–&gt; Producer），而大多数情况下jms是三方系统交互（Consumer &lt;- Broker -&gt; Producer）。当然，JMS也可以实现request-response模式的通信，只要Consumer或Producer其中一方兼任broker即可。</li>
-<li>（3）JMS可以做到异步调用完全隔离了客户端和服务提供者，能够抵御流量洪峰； WebService服务通常为同步调用，需要有复杂的对象转换，相比SOAP，现在JSON，rest都是很好的http架构方案；（举一个例子，电子商务的分布式系统中，有支付系统和业务系统，支付系统负责用户付款，在用户在银行付款后需要通知各个业务系统，那么这个时候，既可以用同步也可以用异步，使用异步的好处就能抵御网站暂时的流量高峰，或者能应对慢消费者。</li>
-<li>（4）JMS是java平台上的消息规范。一般jms消息不是一个xml，而是一个java对象，很明显，jms没考虑异构系统，说白了，JMS就没考虑非java的东西。但是好在现在大多数的jms provider（就是JMS的各种实现产品）都解决了异构问题。相比WebService的跨平台各有千秋吧。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>版权声明：本文为腾讯云博主「黑泽君」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。<br>原文链接：！<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1353191">https://cloud.tencent.com/developer/article/1353191</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/29/%E8%BF%9C%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%20Webservice%20JMS%20RPC%E5%92%8CRMI%E7%9A%84%E5%8C%BA%E5%88%AB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
