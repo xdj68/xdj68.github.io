@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpeg">
+  <link rel="mask-icon" href="/images/favicon.jpeg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xdj68.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="java,js,oracle,html">
+<meta property="og:type" content="website">
+<meta property="og:title">
+<meta property="og:url" content="https://xdj68.github.io/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="java,js,oracle,html">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="许道杰">
+<meta property="article:tag" content="java,js,oracle,html">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xdj68.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+  <title></title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title"></h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不积跬步，无以至千里;<br/>&emsp;不积小流，无以成江海。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+	  <!-- 动态方块背景 -->
+	    <ul class="bg-bubbles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+		<!-- 动态方块背景 -->
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xdj68.github.io/2020/09/09/%E5%9B%BD%E9%99%85%E6%96%B0%E9%97%BB%E9%80%9F%E9%80%92_20200909/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpeg">
+      <meta itemprop="name" content="许道杰">
+      <meta itemprop="description" content="java,js,oracle,html">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/09/%E5%9B%BD%E9%99%85%E6%96%B0%E9%97%BB%E9%80%9F%E9%80%92_20200909/" class="post-title-link" itemprop="url">国际新闻速递</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-09 09:43:29" itemprop="dateCreated datePublished" datetime="2020-09-09T09:43:29+08:00">2020-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-07 21:59:17" itemprop="dateModified" datetime="2022-06-07T21:59:17+08:00">2022-06-07</time>
+              </span>
+
+          
+            <span id="/2020/09/09/%E5%9B%BD%E9%99%85%E6%96%B0%E9%97%BB%E9%80%9F%E9%80%92_20200909/" class="post-meta-item leancloud_visitors" data-flag-title="国际新闻速递" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/09/%E5%9B%BD%E9%99%85%E6%96%B0%E9%97%BB%E9%80%9F%E9%80%92_20200909/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/%E5%9B%BD%E9%99%85%E6%96%B0%E9%97%BB%E9%80%9F%E9%80%92_20200909/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h1 id="原文-PLA-responds-after-shots-fired-at-border-area"><a href="#原文-PLA-responds-after-shots-fired-at-border-area" class="headerlink" title="[原文]PLA responds after shots fired at border area"></a>[原文]PLA responds after shots fired at border area</h1><p><img src="http://img2.chinadaily.com.cn/images/202009/09/5f5813d2a310675e209d0040.jpeg" alt="cmd-markdown-logo"></p>
+<h2 id="India-urged-to-stop-dangerous-actions-pull-back-troops-that-have-trespassed"><a href="#India-urged-to-stop-dangerous-actions-pull-back-troops-that-have-trespassed" class="headerlink" title="India urged to stop dangerous actions, pull back troops that have trespassed"></a>India urged to stop dangerous actions, pull back troops that have trespassed</h2><p>The Chinese military was “forced to take countermeasures” to maintain stability on the border with India after Indian troops trespassed at the southern end of Pangong Tso Lake on Monday and fired warning shots at Chinese border patrols, Senior Colonel Zhang Shuili, spokesman for the People’s Liberation Army Western Theater Command, said on Tuesday.</p>
+<p>It was the second time that Indian troops had violated the Chinese border in eastern Ladakh in China’s Tibet autonomous region in the past two weeks.</p>
+<p>In Monday’s incident, the PLA personnel were about to negotiate with the Indian side when they were fired upon by Indian soldiers, Zhang said in a statement.</p>
+<p>Zhang called the shots a serious violation of relevant agreements between the two countries and a “serious military provocation” that had escalated tension and could easily lead to misunderstandings.</p>
+<p>The two sides had previously agreed not to use firearms at the border. They were the first shots reported to have been fired there in 45 years.</p>
+<p>As a result, the Chinese border troops “were forced to take necessary countermeasures to get the situation under control”, he said.</p>
+<p>He urged the Indian side to immediately stop its dangerous actions, pull back troops that had entered Chinese territory, strictly restrain the behavior of its front-line servicemen and seriously investigate and punish those who fired on the Chinese soldiers to ensure similar incidents do not occur again.</p>
+<p>The PLA Western Theater Command will uphold its duty and mission to staunchly safeguard national sovereignty, Zhang said.</p>
+<p>Foreign Ministry spokesman Zhao Lijian said at a regular news briefing on Tuesday that China has lodged solemn representations to India both through diplomatic and military channels.</p>
+<p>“China always emphasizes that both sides should peacefully settle their differences through dialogue and consultation, and confrontation won’t benefit either side,” he told reporters in Beijing, adding that he hopes the two sides can reach consensus on disengagement as soon as possible.</p>
+<p>The incident came three days after the two countries’ defense ministers met in Moscow and agreed to deescalate the border situation.</p>
+<p>During their meeting, Chinese State Councilor and Defense Minister Wei Fenghe stressed that China cannot lose one inch of its territory and that Chinese troops are completely determined, able and ready to safeguard its sovereignty and territorial integrity.</p>
+<hr>
+<h1 id="我的翻译-中国人民解放军在边境地区开火后的回应"><a href="#我的翻译-中国人民解放军在边境地区开火后的回应" class="headerlink" title="[我的翻译] 中国人民解放军在边境地区开火后的回应"></a>[我的翻译] 中国人民解放军在边境地区开火后的回应</h1><h2 id="印度被督促停止危险行为-撤回非法入侵军队"><a href="#印度被督促停止危险行为-撤回非法入侵军队" class="headerlink" title="印度被督促停止危险行为, 撤回非法入侵军队"></a>印度被督促停止危险行为, 撤回非法入侵军队</h2><p>印度再次非法入侵中国西藏边境班公湖南部地区并鸣枪开火，中国人民解放军西部战区发言人表示这严重违反了中印俩国的沟通协商成果，加剧俩国紧张的边境形势。张发言人要求印军立刻撤出入侵的中方地区并严格限制印军，控制军人越境开火行为并保证不再发生类似事件，最后强调希望通过沟通和交流解决边境纠纷达成共识。</p>
+<h2 id="词汇积累"><a href="#词汇积累" class="headerlink" title="词汇积累"></a>词汇积累</h2><ul>
+<li>1 trespass        vi  非法入侵</li>
+<li>2 provocation     n   挑衅</li>
+<li>3 sovereignty     n   主权</li>
+<li>4 integrity       n   完整</li>
+</ul>
+<hr>
+<p>原文链接：<a target="_blank" rel="noopener" href="http://www.chinadaily.com.cn/a/202009/09/WS5f5813d2a310675eafc585bb.html">http://www.chinadaily.com.cn/a/202009/09/WS5f5813d2a310675eafc585bb.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xdj68.github.io/2019/09/29/%E8%BF%9C%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%20Webservice%20JMS%20RPC%E5%92%8CRMI%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpeg">
+      <meta itemprop="name" content="许道杰">
+      <meta itemprop="description" content="java,js,oracle,html">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/29/%E8%BF%9C%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%20Webservice%20JMS%20RPC%E5%92%8CRMI%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">远程通信技术 Webservice JMS RPC和RMI的区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-29 19:40:20" itemprop="dateCreated datePublished" datetime="2019-09-29T19:40:20+08:00">2019-09-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-07 21:59:17" itemprop="dateModified" datetime="2022-06-07T21:59:17+08:00">2022-06-07</time>
+              </span>
+
+          
+            <span id="/2019/09/29/%E8%BF%9C%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%20Webservice%20JMS%20RPC%E5%92%8CRMI%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-meta-item leancloud_visitors" data-flag-title="远程通信技术 Webservice JMS RPC和RMI的区别" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/29/%E8%BF%9C%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%20Webservice%20JMS%20RPC%E5%92%8CRMI%E7%9A%84%E5%8C%BA%E5%88%AB/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/29/%E8%BF%9C%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%20Webservice%20JMS%20RPC%E5%92%8CRMI%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="远程通信技术-Webservice-JMS-RPC和RMI的区别"><a href="#远程通信技术-Webservice-JMS-RPC和RMI的区别" class="headerlink" title="远程通信技术 Webservice JMS RPC和RMI的区别"></a>远程通信技术 Webservice JMS RPC和RMI的区别</h1><hr>
+<h2 id="一、RMI-远程方法调用"><a href="#一、RMI-远程方法调用" class="headerlink" title="一、RMI 远程方法调用"></a>一、RMI 远程方法调用</h2><p>RMI（Remote Method Invocation）远程方法调用。能够让在客户端Java虚拟机上的对象像调用本地对象一样调用服务端java 虚拟机中的对象上的方法。使用代表：EJB</p>
+<h4 id="RMI远方法程调用步骤："><a href="#RMI远方法程调用步骤：" class="headerlink" title="RMI远方法程调用步骤："></a>RMI远方法程调用步骤：</h4><ul>
+<li>1、客户调用客户端辅助对象stub上的方法</li>
+<li>2、客户端辅助对象stub打包调用信息（变量、方法名），通过网络发送给服务端辅助对象skeleton</li>
+<li>3、服务端辅助对象skeleton将客户端辅助对象发送来的信息解包，找出真正被调用的方法以及该方法所在对象</li>
+<li>4、调用真正服务对象上的真正方法，并将结果返回给服务端辅助对象skeleton</li>
+<li>5、服务端辅助对象将结果打包，发送给客户端辅助对象stub</li>
+<li>6、客户端辅助对象将返回值解包，返回给调用者</li>
+<li>7、客户获得返回值</li>
+</ul>
+<h2 id="二、RPC-远程过程调用"><a href="#二、RPC-远程过程调用" class="headerlink" title="二、RPC 远程过程调用"></a>二、RPC 远程过程调用</h2><p>RPC（Remote Procedure Call Protocol）远程过程调用协议，通过网络从远程计算机上请求调用某种服务。它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。 使用代表：Dubbo<br>一次RPC调用的过程大概有10步： </p>
+<ul>
+<li><p>1、执行客户端调用语句，传送参数</p>
+</li>
+<li><p>2、调用本地系统发送网络消息</p>
+</li>
+<li><p>3、消息传送到远程主机</p>
+</li>
+<li><p>4、服务器得到消息并取得参数 </p>
+</li>
+<li><p>5、根据调用请求以及参数执行远程过程（服务）</p>
+</li>
+<li><p>6、执行过程完毕，将结果返回服务器句柄</p>
+</li>
+<li><p>7、服务器句柄返回结果，调用远程主机的系统网络服务发送结果</p>
+</li>
+<li><p>8、消息传回本地主机 </p>
+</li>
+<li><p>9、客户端句柄由本地主机的网络服务接收消息</p>
+</li>
+<li><p>10、客户端接收到调用语句返回的结果数据</p>
+<blockquote>
+</blockquote>
+<h2 id="三、RMI与RPC的区别"><a href="#三、RMI与RPC的区别" class="headerlink" title="三、RMI与RPC的区别"></a>三、RMI与RPC的区别</h2></li>
+<li><p>1、方法调用方式不同：<br>RMI调用方法，RMI中是通过在客户端的Stub对象作为远程接口进行远程方法的调用。每个远程方法都具有方法签名。如果一个方法在服务器上执行，但是没有相匹配的签名被添加到这个远程接口(stub)上，那么这个新方法就不能被RMI客户方所调用。<br>RPC调用函数，RPC中是通过网络服务协议向远程主机发送请求，请求包含了一个参数集和一个文本值，通常形成“classname.methodname(参数集)”的形式。这就向RPC服务器表明，被请求的方法在“classname”的类中，名叫“methodname”。然后RPC服务器就去搜索与之相匹配的类和方法，并把它作为那种方法参数类型的输入。这里的参数类型是与RPC请求中的类型是匹配的。一旦匹配成功，这个方法就被调用了，其结果被编码后通过网络协议发回。</p>
+</li>
+<li><p>2、适用语言范围不同：<br>RMI只用于Java，支持传输对象。<br>RPC是基于C语言的，不支持传输对象，是网络服务协议，与操作系统和语言无关。</p>
+</li>
+<li><p>3、调用结果的返回形式不同：<br>RMI是面向对象的，Java是面向对象的，所以RMI的调用结果可以是对象类型或者基本数据类型。<br>RPC的结果统一由外部数据表示(External Data Representation,XDR)语言表示，这种语言抽象了字节序类和数据类型结构之间的差异。只有由XDR定义的数据类型才能被传递，可以说RMI是面向对象方式的Java RPC。</p>
+</li>
+</ul>
+<h4 id="四、附录"><a href="#四、附录" class="headerlink" title="四、附录"></a>四、附录</h4><ul>
+<li><p>RPC（Remote Procedure Call Protocol）远程过程调用协议，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC不依赖于具体的网络传输协议，tcp、udp等都可以。<br>由于存在各式各样的变换和细节差异，相应的RPC也派生出了各式远程过程通信协议。RPC是跨语言的通信标准，SUN和微软都有其实现，比如：RMI可以被看作SUN对RPC的Java版本（实现），而微软的DCOM就是建立在ORPC协议之上。<br>一言以蔽之，RPC是协议，而无论是SUN的RMI还是微软的DCOM都是对该协议的不同实现，二者都为编程人员提供了应用PRC技术的程序接口（API）。</p>
+</li>
+<li><p>RMI是Java的一组拥护开发分布式应用程序的API。RMI使用Java语言接口定义了远程对象，它集合了Java序列化和Java远程方法协议(Java Remote Method Protocol)。简单地说，这样使原先的程序在同一操作系统的方法调用，变成了不同操作系统之间程序的方法调用，由于J2EE是分布式程序平台，它以RMI机制实现了程序组件在不同操作系统之间的通信。<br>比如，一个EJB可以通过RMI调用Web上另一台机器上的EJB远程方法。<br>RMI（Remote Method Invocation，远程方法调用）是用Java在JDK1.1中实现的，它大大增强了Java开发分布式应用的能力。</p>
+</li>
+<li><p>Java作为一种风靡一时的网络开发语言，其巨大的威力就体现在它强大的开发分布式网络应用的能力上，而RMI就是开发百分之百纯Java的网络分布式应用系统的核心解决方案之一。其实RMI可以被看作是RPC的Java版本（实现）。<br>传统RPC并不能很好地应用于分布式对象系统，而Java RMI 则支持存储于不同地址空间的程序级对象之间彼此进行通信，实现远程对象之间的无缝远程调用。<br>RMI目前使用Java远程消息交换协议（JRMP，Java Remote Messaging Protocol）进行通信。JRMP是专为Java的远程对象制定的协议。因此，Java RMI具有Java的“Write Once，Run Anywhere”的优点，是分布式应用系统的百分之百纯Java解决方案。用Java RMI开发的应用系统可以部署在任何支持JRE（Java Run Environment Java，Java运行环境）的平台上。但由于JRMP是专为Java对象制定的，因此，RMI对于用非Java语言开发的应用系统的支持不足。不能与用非Java语言书写的对象进行通信。</p>
+</li>
+<li><p>Hadoop作为一个存储与服务的基础性平台，同时它的内部有采用了master/slave架构，那么其内部通信和与客户端的交互就是必不可少的了。Hadoop在实现时抛弃了JDK自带的一个RPC实现–RMI，而自己基于IPC模型实现了一个更高效的轻量级RPC。</p>
+</li>
+<li><p>RMI的局限性之一：RMI对服务器的IP地址和端口依赖很紧密，但是在开发的时候不知道将来的服务器IP和端口如何，但是客户端程序依赖这个IP和端口。这个问题有两种解决途径：一是通过DNS来解决，二是通过封装将IP暴露到程序代码之外。注意：我们在实际开发中，我们是知道服务器IP和端口的。<br>RMI的局限性之二：是RMI是Java语言的远程调用，两端的程序语言必须是Java实现，对于不同语言间的通讯可以考虑用WebService或者公用对象请求代理体系（CORBA）来实现。</p>
+</li>
+<li><p>3、JMS：Java 消息服务(Java Messaging Service) 是一种允许应用程序创建、发送、接受和读取消息的Java API。JMS 在其中扮演的角色与JDBC 很相似，正如 JDBC 提供了一套用于访问各种不同关系数据库的公共API，JMS 也提供了独立于特定厂商的企业消息系统访问方式。<br>使用JMS 的应用程序被称为JMS客户端，处理消息路由与传递的消息系统被称为 JMS Provider，而JMS 应用则是由多个JMS 客户端和一个 JMS Provider 构成的业务系统。发送消息的JMS 客户端被称为生产者(producer)，而接收消息的JMS 客户端则被称为消费者(consumer)。同一JMS 客户端既可以是生产者也可以是消费者。<br>JMS 的编程过程很简单，概括为：应用程序A 发送一条消息到消息服务器(也就是JMS Provider)的某个目的地(Destination)，然后消息服务器把消息转发给应用程序B。因为应用程序A 和应用程序B 没有直接的代码关连，所以两者实现了解偶。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>RMI和JMS的区别：<ul>
+<li>1、传输方式上<br>JMS 与 RMI 的区别在于：采用 JMS 服务，对象是在物理上被异步从网络的某个 JVM 上直接移动到另一个 JVM 上（是消息通知机制）。<br>RMI 对象是绑定在本地 JVM 中，只有函数参数和返回值是通过网络传送的（是请求应答机制）。</li>
+<li>2、方法调用上<br>RMI 一般都是同步的，也就是说，当client端调用Server端的一个方法的时候，需要等到对方的返回，才能继续执行client端，这个过程跟调用本地方法感觉上是一样的，这也是RMI的一个特点。<br>JMS 一般只是一个点发出一个Message到Message Server端，发出之后一般不会关心谁用了这个message。<br>一般RMI的应用是紧耦合，JMS的应用相对来说是松散耦合的应用。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>RPC与RMI的区别<ul>
+<li>（1）RPC 跨语言，而 RMI只支持Java。</li>
+<li> (2）RMI 调用远程对象方法，允许方法返回 Java 对象以及基本数据类型，而RPC 不支持对象的概念，传送到 RPC 服务的消息由外部数据表示 (External Data Representation, XDR) 语言表示，这种语言抽象了字节序类和数据类型结构之间的差异。只有由 XDR 定义的数据类型才能被传递， 可以说 RMI 是面向对象方式的 Java RPC 。</li>
+<li>（3）在方法调用上，RMI中，远程接口使每个远程方法都具有方法签名。如果一个方法在服务器上执行，但是没有相匹配的签名被添加到这个远程接口上，那么这个新方法就不能被RMI客户方所调用。在RPC中，当一个请求到达RPC服务器时，这个请求就包含了一个参数集和一个文本值，通常形成“classname.methodname”的形式。这就向RPC服务器表明，被请求的方法在为 “classname”的类中，名叫“methodname”。然后RPC服务器就去搜索与之相匹配的类和方法，并把它作为那种方法参数类型的输入。这里的参数类型是与RPC请求中的类型是匹配的。一旦匹配成功，这个方法就被调用了，其结果被编码后返回客户方。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Webservice与RMI的区别<ul>
+<li>（1）RMI是在tcp协议上传递可序列化的java对象，只能用在java虚拟机上，绑定语言，客户端和服务端都必须是java</li>
+<li>（2）webservice没有这个限制，webservice是在http协议上传递xml文本文件，与语言和平台无关</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Webservice与JMS的区别<ul>
+<li>（1）Webservice专注于远程服务调用，jms专注于信息交换。</li>
+<li>（2）大多数情况下Webservice是两系统间的直接交互（Consumer &lt;–&gt; Producer），而大多数情况下jms是三方系统交互（Consumer &lt;- Broker -&gt; Producer）。当然，JMS也可以实现request-response模式的通信，只要Consumer或Producer其中一方兼任broker即可。</li>
+<li>（3）JMS可以做到异步调用完全隔离了客户端和服务提供者，能够抵御流量洪峰； WebService服务通常为同步调用，需要有复杂的对象转换，相比SOAP，现在JSON，rest都是很好的http架构方案；（举一个例子，电子商务的分布式系统中，有支付系统和业务系统，支付系统负责用户付款，在用户在银行付款后需要通知各个业务系统，那么这个时候，既可以用同步也可以用异步，使用异步的好处就能抵御网站暂时的流量高峰，或者能应对慢消费者。</li>
+<li>（4）JMS是java平台上的消息规范。一般jms消息不是一个xml，而是一个java对象，很明显，jms没考虑异构系统，说白了，JMS就没考虑非java的东西。但是好在现在大多数的jms provider（就是JMS的各种实现产品）都解决了异构问题。相比WebService的跨平台各有千秋吧。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>版权声明：本文为腾讯云博主「黑泽君」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。<br>原文链接：！<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1353191">https://cloud.tencent.com/developer/article/1353191</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xdj68.github.io/2019/08/20/Markdown%E7%BC%96%E8%BE%91%E9%98%85%E8%AF%BB%E5%99%A8%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpeg">
+      <meta itemprop="name" content="许道杰">
+      <meta itemprop="description" content="java,js,oracle,html">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/20/Markdown%E7%BC%96%E8%BE%91%E9%98%85%E8%AF%BB%E5%99%A8%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">Markdown编辑阅读器常用语法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-20 19:43:29" itemprop="dateCreated datePublished" datetime="2019-08-20T19:43:29+08:00">2019-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-07 21:59:17" itemprop="dateModified" datetime="2022-06-07T21:59:17+08:00">2022-06-07</time>
+              </span>
+
+          
+            <span id="/2019/08/20/Markdown%E7%BC%96%E8%BE%91%E9%98%85%E8%AF%BB%E5%99%A8%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" class="post-meta-item leancloud_visitors" data-flag-title="Markdown编辑阅读器常用语法" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/20/Markdown%E7%BC%96%E8%BE%91%E9%98%85%E8%AF%BB%E5%99%A8%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/20/Markdown%E7%BC%96%E8%BE%91%E9%98%85%E8%AF%BB%E5%99%A8%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="欢迎使用-Cmd-Markdown-编辑阅读器"><a href="#欢迎使用-Cmd-Markdown-编辑阅读器" class="headerlink" title="欢迎使用 Cmd Markdown 编辑阅读器"></a>欢迎使用 Cmd Markdown 编辑阅读器</h1><hr>
+<p>我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：</p>
+<blockquote>
+<ul>
+<li>整理知识，学习笔记</li>
+<li>发布日记，杂文，所见所想</li>
+<li>撰写发布技术文稿（代码支持）</li>
+<li>撰写发布学术论文（LaTeX 公式支持）</li>
+</ul>
+</blockquote>
+<p><img src="https://www.zybuluo.com/static/img/logo.png" alt="cmd-markdown-logo"></p>
+<p>除了您现在看到的这个 Cmd Markdown 在线版本，您还可以前往以下网址下载：</p>
+<h3 id="Windows-Mac-Linux-全平台客户端"><a href="#Windows-Mac-Linux-全平台客户端" class="headerlink" title="Windows/Mac/Linux 全平台客户端"></a><a target="_blank" rel="noopener" href="https://www.zybuluo.com/cmd/">Windows/Mac/Linux 全平台客户端</a></h3><blockquote>
+<p>请保留此份 Cmd Markdown 的欢迎稿兼使用说明，如需撰写新稿件，点击顶部工具栏右侧的 <i class="icon-file"></i> <strong>新文稿</strong> 或者使用快捷键 <code>Ctrl+Alt+N</code>。</p>
+</blockquote>
+<hr>
+<h2 id="什么是-Markdown"><a href="#什么是-Markdown" class="headerlink" title="什么是 Markdown"></a>什么是 Markdown</h2><p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> 某些文字，更棒的是，它还可以</p>
+<h3 id="1-制作一份待办事宜-Todo-列表"><a href="#1-制作一份待办事宜-Todo-列表" class="headerlink" title="1. 制作一份待办事宜 Todo 列表"></a>1. 制作一份待办事宜 <a target="_blank" rel="noopener" href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#13-%E5%BE%85%E5%8A%9E%E4%BA%8B%E5%AE%9C-todo-%E5%88%97%E8%A1%A8">Todo 列表</a></h3><ul>
+<li><input disabled="" type="checkbox"> 支持以 PDF 格式导出文稿</li>
+<li><input disabled="" type="checkbox"> 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率</li>
+<li><input checked="" disabled="" type="checkbox"> 新增 Todo 列表功能</li>
+<li><input checked="" disabled="" type="checkbox"> 修复 LaTex 公式渲染问题</li>
+<li><input checked="" disabled="" type="checkbox"> 新增 LaTex 公式编号功能</li>
+</ul>
+<h3 id="2-书写一个质能守恒公式-LaTeX"><a href="#2-书写一个质能守恒公式-LaTeX" class="headerlink" title="2. 书写一个质能守恒公式[^LaTeX]"></a>2. 书写一个质能守恒公式[^LaTeX]</h3><p>$$E=mc^2$$</p>
+<h3 id="3-高亮一段代码-code"><a href="#3-高亮一段代码-code" class="headerlink" title="3. 高亮一段代码[^code]"></a>3. 高亮一段代码[^code]</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requires_authorization</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SomeClass</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># A comment</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;hello world&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requires_authorization</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SomeClass</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># A comment</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;hello world&#x27;</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="4-高效绘制-流程图"><a href="#4-高效绘制-流程图" class="headerlink" title="4. 高效绘制 流程图"></a>4. 高效绘制 <a target="_blank" rel="noopener" href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#7-%E6%B5%81%E7%A8%8B%E5%9B%BE">流程图</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: Your Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line"> </span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
+
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: Your Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line"> </span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="5-高效绘制-序列图"><a href="#5-高效绘制-序列图" class="headerlink" title="5. 高效绘制 序列图"></a>5. 高效绘制 <a target="_blank" rel="noopener" href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#8-%E5%BA%8F%E5%88%97%E5%9B%BE">序列图</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Alice-&gt;Bob: Hello Bob, how are you?</span><br><span class="line">Note right of Bob: Bob thinks</span><br><span class="line">Bob--&gt;Alice: I am good thanks!</span><br></pre></td></tr></table></figure>
+
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Alice-&gt;Bob: Hello Bob, how are you?</span><br><span class="line">Note right of Bob: Bob thinks</span><br><span class="line">Bob--&gt;Alice: I am good thanks!</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="6-高效绘制-甘特图"><a href="#6-高效绘制-甘特图" class="headerlink" title="6. 高效绘制 甘特图"></a>6. 高效绘制 <a target="_blank" rel="noopener" href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#9-%E7%94%98%E7%89%B9%E5%9B%BE">甘特图</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    title 项目开发流程</span><br><span class="line">    section 项目确定</span><br><span class="line">        需求分析       :a1, 2016-06-22, 3d</span><br><span class="line">        可行性报告     :after a1, 5d</span><br><span class="line">        概念验证       : 5d</span><br><span class="line">    section 项目实施</span><br><span class="line">        概要设计      :2016-07-05  , 5d</span><br><span class="line">        详细设计      :2016-07-08, 10d</span><br><span class="line">        编码          :2016-07-15, 10d</span><br><span class="line">        测试          :2016-07-22, 5d</span><br><span class="line">    section 发布验收</span><br><span class="line">        发布: 2d</span><br><span class="line">        验收: 3d</span><br></pre></td></tr></table></figure>
+
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">        title 项目开发流程</span><br><span class="line">        section 项目确定</span><br><span class="line">            需求分析       :a1, 2016-06-22, 3d</span><br><span class="line">            可行性报告     :after a1, 5d</span><br><span class="line">            概念验证       : 5d</span><br><span class="line">        section 项目实施</span><br><span class="line">            概要设计      :2016-07-05  , 5d</span><br><span class="line">            详细设计      :2016-07-08, 10d</span><br><span class="line">            编码          :2016-07-15, 10d</span><br><span class="line">            测试          :2016-07-22, 5d</span><br><span class="line">        section 发布验收</span><br><span class="line">            发布: 2d</span><br><span class="line">            验收: 3d</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="7-绘制表格"><a href="#7-绘制表格" class="headerlink" title="7. 绘制表格"></a>7. 绘制表格</h3><p>| 项目        | 价格   |  数量  |<br>| ——–   | —–:  | :—-:  |<br>| 计算机     | $1600 |   5     |<br>| 手机        |   $12   |   12   |<br>| 管线        |    $1    |  234  |</p>
+<pre><code>| 项目        | 价格   |  数量  |
+| --------   | -----:  | :----:  |
+| 计算机     | \$1600 |   5     |
+| 手机        |   \$12   |   12   |
+| 管线        |    \$1    |  234  |
+</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/08/20/Markdown%E7%BC%96%E8%BE%91%E9%98%85%E8%AF%BB%E5%99%A8%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xdj68.github.io/2019/07/25/Nexo%E5%AE%98%E7%BD%91%E5%B8%B8%E7%94%A8%E6%9E%84%E5%BB%BA%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpeg">
+      <meta itemprop="name" content="许道杰">
+      <meta itemprop="description" content="java,js,oracle,html">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/25/Nexo%E5%AE%98%E7%BD%91%E5%B8%B8%E7%94%A8%E6%9E%84%E5%BB%BA%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">Nexo官网常用构建指令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-25 15:22:36" itemprop="dateCreated datePublished" datetime="2019-07-25T15:22:36+08:00">2019-07-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-07 21:59:17" itemprop="dateModified" datetime="2022-06-07T21:59:17+08:00">2022-06-07</time>
+              </span>
+
+          
+            <span id="/2019/07/25/Nexo%E5%AE%98%E7%BD%91%E5%B8%B8%E7%94%A8%E6%9E%84%E5%BB%BA%E6%8C%87%E4%BB%A4/" class="post-meta-item leancloud_visitors" data-flag-title="Nexo官网常用构建指令" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/07/25/Nexo%E5%AE%98%E7%BD%91%E5%B8%B8%E7%94%A8%E6%9E%84%E5%BB%BA%E6%8C%87%E4%BB%A4/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/07/25/Nexo%E5%AE%98%E7%BD%91%E5%B8%B8%E7%94%A8%E6%9E%84%E5%BB%BA%E6%8C%87%E4%BB%A4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/25/Nexo%E5%AE%98%E7%BD%91%E5%B8%B8%E7%94%A8%E6%9E%84%E5%BB%BA%E6%8C%87%E4%BB%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="许道杰"
+      src="/images/favicon.jpeg">
+  <p class="site-author-name" itemprop="name">许道杰</p>
+  <div class="site-description" itemprop="description">java,js,oracle,html</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xdj68" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xdj68" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:835923255@qq.com" title="E-Mail → mailto:835923255@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/6013910096" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;6013910096" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/xdj68" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;xdj68" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+	
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">许道杰</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/jquery-3.2.1.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'CLuTbcdzqS4Cf2yBQlHv1RH4-gzGzoHsz',
+      appKey     : 'l1KY4HxKr8urtUOLqM23Ap0R',
+      placeholder: "",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
