@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">5</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -193,6 +193,123 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xdj68.github.io/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpeg">
+      <meta itemprop="name" content="许道杰">
+      <meta itemprop="description" content="java,js,oracle,html">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/" class="post-title-link" itemprop="url">Linux搭建配置vsftp+本地用户虚拟用户创建</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-17 00:22:20 / 修改时间：00:25:22" itemprop="dateCreated datePublished" datetime="2022-07-17T00:22:20+08:00">2022-07-17</time>
+            </span>
+
+          
+            <span id="/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/" class="post-meta-item leancloud_visitors" data-flag-title="Linux搭建配置vsftp+本地用户虚拟用户创建" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Linux搭建配置vsftp-本地用户-虚拟用户创建"><a href="#Linux搭建配置vsftp-本地用户-虚拟用户创建" class="headerlink" title="Linux搭建配置vsftp+本地用户|虚拟用户创建"></a>Linux搭建配置vsftp+本地用户|虚拟用户创建</h1><hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​     最近正在写设计模式的案例结合，由于需要补充spring源码知识，现在正在看spring源码深度解析以结合设计模式创作，估计设计模式这篇需要要写很长一段时间了😅😅~~</p>
+<p>​     工作中由于测试环境服务器到期需要变更服务器，服务环境需要重新搭建，同事搭建vsftp一直有问题，于是自己研究了三天终于搭建成功了（原来以为很简单，但是搭建中才发现各种权限问题，认证问题😅😅）,谨此记录整理+归纳总结。</p>
+<p>​    服务器系统:centos7.9  vsftpd版本: version 3.0.2</p>
+<p><strong>我的github主页地址： <a href="https://xdj68.github.io/">https://xdj68.github.io</a></strong><br><strong>vsftpd 官网地址:<a target="_blank" rel="noopener" href="https://security.appspot.com/vsftpd.html**">https://security.appspot.com/vsftpd.html</a></strong></p>
+<hr>
+<h1 id="一、VSFTP简介"><a href="#一、VSFTP简介" class="headerlink" title="一、VSFTP简介"></a>一、VSFTP简介</h1><p>​        FTP 是 File Transfer Protocol（文件传输协议）的英文简称, 用于 Internet 上的控制文件的双向传输。同时，它也是一个应用程序（Application）。 基于不同的操作系统有不同的 FTP 应用程序，而所有这些应用程序都遵守同一种协议以传输文件。</p>
+<p>​     vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX 等系统上面，是一个完全免费的、开放源代码的 ftp 服务器软件，支持很多其他的 FTP 服务器。</p>
+<p>​     vsftpd在千兆以太网上速度可以达到86MB/s,稳定性非常优秀,仅仅采用单机部署方式连续不间断工作24小时传输数据可达2.6TB,平均并发连接为1500用户,峰值可达最大4000用户。安全性非常高，采用了进程分离架构，不同任务进程彼此独立运行，进程均以最小权限运行，使用chroot权限机制，防止客户访问非法共享目录。除此之外,vsftpd 还包括以下特性:</p>
+<ul>
+<li><strong>基于IP的虚拟服务器</strong></li>
+<li><strong>支持PAM或 xinetd/tcp_wrappers的认证方式</strong></li>
+<li><strong>支持两种运行方式：独立和Xinetd</strong></li>
+<li><strong>虚拟用户结合数据库的用户验证</strong></li>
+<li><strong>每个用户独立配置文件</strong></li>
+<li><strong>速率限制</strong></li>
+<li><strong>IPV6支持</strong></li>
+<li><strong>支持SSL加密传输</strong></li>
+</ul>
+<p>​       FTP是仅基于TCP的服务，不支持UDP。 FTP传输使用2个端口，一个数 据端口和一个命令端口。通常来说这两个端口是21（命令端 口）和20（数据端口）。FTP存在俩种模式：主动模式和被动模式。</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>PORT（主动）模式</strong></li>
+</ul>
+<p>​       所谓主动模式，指的是FTP服务器“主动”去连接客户端的数据端口来传输数据，其过程具体来说就是：客户端通过访问服务端的21端口，然后客户端分配一个端口供ftp服务端获取数据，然后服务端通过20端口主动到客户端指定端口获取数据，20为服务器的出向端口</p>
+<p><strong>此模式，防火墙只需要开放21端口的对外访问策略</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>PASV（被动）模式</strong></li>
+</ul>
+<p>​        所谓被动模式，指的是FTP服务器“被动”等待客户端来连接自己的数据端口，其过程具体是：客户端通过访问服务端的21端口，然后客户端提交PASV命令，让服务端分配一个用于传输数据的端口，此端口范围为vsftpd.conf配置的pasv_min_port-pasv_max_port，然后客户端通过分配的端口上传数据。（注意此模式下的FTP服务器不需要开启tcp 20端口）</p>
+<p><strong>此模式，防火墙需要开放21端口的对外访问策略和pasv_min_port - pasv_max_port端口范围内的访问策略</strong></p>
+<hr>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xdj68.github.io/2022/06/28/Hexo%E8%BF%81%E7%A7%BB%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7+nvm%E7%AE%A1%E7%90%86nodejs%E7%89%88%E6%9C%AC%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -216,10 +333,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-06-28 01:40:14 / 修改时间：01:56:21" itemprop="dateCreated datePublished" datetime="2022-06-28T01:40:14+08:00">2022-06-28</time>
+              <time title="创建时间：2022-06-28 01:40:14" itemprop="dateCreated datePublished" datetime="2022-06-28T01:40:14+08:00">2022-06-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-17 00:25:42" itemprop="dateModified" datetime="2022-07-17T00:25:42+08:00">2022-07-17</time>
+              </span>
 
           
             <span id="/2022/06/28/Hexo%E8%BF%81%E7%A7%BB%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7+nvm%E7%AE%A1%E7%90%86nodejs%E7%89%88%E6%9C%AC%E9%85%8D%E7%BD%AE/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo迁移版本升级+nvm管理nodejs版本配置" title="阅读次数">
@@ -283,6 +406,31 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo 安装hexo</span><br><span class="line">hexo -v    查看hexo版本</span><br><span class="line">hexo init Blog  Blog文件夹中初始化hexo</span><br><span class="line">cd Blog   进入Blog 文件夹</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next git下载next主题</span><br></pre></td></tr></table></figure>
 
 <hr>
+<h1 id="三-hexo配置发布和next主题配置"><a href="#三-hexo配置发布和next主题配置" class="headerlink" title="三.hexo配置发布和next主题配置"></a>三.hexo配置发布和next主题配置</h1><h2 id="1-hexo文章发布"><a href="#1-hexo文章发布" class="headerlink" title="1.hexo文章发布"></a>1.hexo文章发布</h2><p>hexo 支持markdown文件的渲染并以html格式在/Blog/public文件夹内生成相应文件<br>markdown文件编辑器推荐 <strong>Typora</strong><br>写完博客后只要将文件后缀为.md文件复制到/Blog/source/ _posts 中即可<br>hexo 配置发布主要以下命令</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hexo generate  或 hexo g</td>
+<td>生成静态文件</td>
+</tr>
+<tr>
+<td>hexo server 或者 hexo s</td>
+<td>启动hexo服务，默认情况下，访问网址为： <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a></td>
+</tr>
+<tr>
+<td>hexo deploy 或者hexo d</td>
+<td>部署静态文件</td>
+</tr>
+<tr>
+<td>hexo clean</td>
+<td>清除缓存文件 (db.json) 和已生成的静态文件 (public) 在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令</td>
+</tr>
+</tbody></table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/06/28/Hexo%E8%BF%81%E7%A7%BB%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7+nvm%E7%AE%A1%E7%90%86nodejs%E7%89%88%E6%9C%AC%E9%85%8D%E7%BD%AE/#more" rel="contents">
@@ -850,7 +998,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

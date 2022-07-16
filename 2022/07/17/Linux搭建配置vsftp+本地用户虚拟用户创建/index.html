@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpeg">
+  <link rel="mask-icon" href="/images/favicon.jpeg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xdj68.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Linux搭建配置vsftp+本地用户|虚拟用户创建 前言​     最近正在写设计模式的案例结合，由于需要补充spring源码知识，现在正在看spring源码深度解析以结合设计模式创作，估计设计模式这篇需要要写很长一段时间了😅😅~~ ​     工作中由于测试环境服务器到期需要变更服务器，服务环境需要重新搭建，同事搭建vsftp一直有问题，于是自己研究了三天终于搭建成功了（原来以为很简单，但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux搭建配置vsftp+本地用户虚拟用户创建">
+<meta property="og:url" content="https://xdj68.github.io/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Linux搭建配置vsftp+本地用户|虚拟用户创建 前言​     最近正在写设计模式的案例结合，由于需要补充spring源码知识，现在正在看spring源码深度解析以结合设计模式创作，估计设计模式这篇需要要写很长一段时间了😅😅~~ ​     工作中由于测试环境服务器到期需要变更服务器，服务环境需要重新搭建，同事搭建vsftp一直有问题，于是自己研究了三天终于搭建成功了（原来以为很简单，但">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-16T16:22:20.000Z">
+<meta property="article:modified_time" content="2022-07-16T16:25:22.756Z">
+<meta property="article:author" content="许道杰">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="FTP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xdj68.github.io/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+  <title>Linux搭建配置vsftp+本地用户虚拟用户创建 | </title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title"></h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不积跬步，无以至千里;<br/>&emsp;不积小流，无以成江海。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">6</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+	  <!-- 动态方块背景 -->
+	    <ul class="bg-bubbles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+		<!-- 动态方块背景 -->
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xdj68.github.io/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpeg">
+      <meta itemprop="name" content="许道杰">
+      <meta itemprop="description" content="java,js,oracle,html">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux搭建配置vsftp+本地用户虚拟用户创建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-17 00:22:20 / 修改时间：00:25:22" itemprop="dateCreated datePublished" datetime="2022-07-17T00:22:20+08:00">2022-07-17</time>
+            </span>
+
+          
+            <span id="/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/" class="post-meta-item leancloud_visitors" data-flag-title="Linux搭建配置vsftp+本地用户虚拟用户创建" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/17/Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp+%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Linux搭建配置vsftp-本地用户-虚拟用户创建"><a href="#Linux搭建配置vsftp-本地用户-虚拟用户创建" class="headerlink" title="Linux搭建配置vsftp+本地用户|虚拟用户创建"></a>Linux搭建配置vsftp+本地用户|虚拟用户创建</h1><hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​     最近正在写设计模式的案例结合，由于需要补充spring源码知识，现在正在看spring源码深度解析以结合设计模式创作，估计设计模式这篇需要要写很长一段时间了😅😅~~</p>
+<p>​     工作中由于测试环境服务器到期需要变更服务器，服务环境需要重新搭建，同事搭建vsftp一直有问题，于是自己研究了三天终于搭建成功了（原来以为很简单，但是搭建中才发现各种权限问题，认证问题😅😅）,谨此记录整理+归纳总结。</p>
+<p>​    服务器系统:centos7.9  vsftpd版本: version 3.0.2</p>
+<p><strong>我的github主页地址： <a href="https://xdj68.github.io/">https://xdj68.github.io</a></strong><br><strong>vsftpd 官网地址:<a target="_blank" rel="noopener" href="https://security.appspot.com/vsftpd.html**">https://security.appspot.com/vsftpd.html</a></strong></p>
+<hr>
+<h1 id="一、VSFTP简介"><a href="#一、VSFTP简介" class="headerlink" title="一、VSFTP简介"></a>一、VSFTP简介</h1><p>​        FTP 是 File Transfer Protocol（文件传输协议）的英文简称, 用于 Internet 上的控制文件的双向传输。同时，它也是一个应用程序（Application）。 基于不同的操作系统有不同的 FTP 应用程序，而所有这些应用程序都遵守同一种协议以传输文件。</p>
+<p>​     vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX 等系统上面，是一个完全免费的、开放源代码的 ftp 服务器软件，支持很多其他的 FTP 服务器。</p>
+<p>​     vsftpd在千兆以太网上速度可以达到86MB/s,稳定性非常优秀,仅仅采用单机部署方式连续不间断工作24小时传输数据可达2.6TB,平均并发连接为1500用户,峰值可达最大4000用户。安全性非常高，采用了进程分离架构，不同任务进程彼此独立运行，进程均以最小权限运行，使用chroot权限机制，防止客户访问非法共享目录。除此之外,vsftpd 还包括以下特性:</p>
+<ul>
+<li><strong>基于IP的虚拟服务器</strong></li>
+<li><strong>支持PAM或 xinetd/tcp_wrappers的认证方式</strong></li>
+<li><strong>支持两种运行方式：独立和Xinetd</strong></li>
+<li><strong>虚拟用户结合数据库的用户验证</strong></li>
+<li><strong>每个用户独立配置文件</strong></li>
+<li><strong>速率限制</strong></li>
+<li><strong>IPV6支持</strong></li>
+<li><strong>支持SSL加密传输</strong></li>
+</ul>
+<p>​       FTP是仅基于TCP的服务，不支持UDP。 FTP传输使用2个端口，一个数 据端口和一个命令端口。通常来说这两个端口是21（命令端 口）和20（数据端口）。FTP存在俩种模式：主动模式和被动模式。</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>PORT（主动）模式</strong></li>
+</ul>
+<p>​       所谓主动模式，指的是FTP服务器“主动”去连接客户端的数据端口来传输数据，其过程具体来说就是：客户端通过访问服务端的21端口，然后客户端分配一个端口供ftp服务端获取数据，然后服务端通过20端口主动到客户端指定端口获取数据，20为服务器的出向端口</p>
+<p><strong>此模式，防火墙只需要开放21端口的对外访问策略</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>PASV（被动）模式</strong></li>
+</ul>
+<p>​        所谓被动模式，指的是FTP服务器“被动”等待客户端来连接自己的数据端口，其过程具体是：客户端通过访问服务端的21端口，然后客户端提交PASV命令，让服务端分配一个用于传输数据的端口，此端口范围为vsftpd.conf配置的pasv_min_port-pasv_max_port，然后客户端通过分配的端口上传数据。（注意此模式下的FTP服务器不需要开启tcp 20端口）</p>
+<p><strong>此模式，防火墙需要开放21端口的对外访问策略和pasv_min_port - pasv_max_port端口范围内的访问策略</strong></p>
+<hr>
+<span id="more"></span>
+
+<h1 id="二、VSFTP服务安装-非root权限"><a href="#二、VSFTP服务安装-非root权限" class="headerlink" title="二、VSFTP服务安装(非root权限)"></a>二、VSFTP服务安装(非root权限)</h1><p>因为测试环境给的非root用户，安装中遇到各种权限问题（毕竟不是运维，没有root权限😅😅很尴尬）<br>考虑服务器安全性，FTP    采用被动模式开放固定端口(一般要大于1024),禁止匿名用户，允许本机用户+虚拟用户结合的方式。<br>本机用户创建ftpsearch和ftptvip 一个给会员项目使用目录为/var/ftp/vip，一个给搜索项目使用目录为/var/ftp/search<br>本机用户ftpuser映射所有虚拟用户，创建virtual_vip和virtual_seach俩个虚拟用户,统一目录为虚拟用户目录/var/ftp/pub</p>
+<h4 id="1-安装vsftpd"><a href="#1-安装vsftpd" class="headerlink" title="1 安装vsftpd"></a>1 安装vsftpd</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s yum -y install vsftpd </span><br></pre></td></tr></table></figure>
+
+<h4 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2 修改配置文件"></a>2 修改配置文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/vsftpd/</span><br><span class="line">sudo -s cp vsftpd.conf vsftpd.conf.bak</span><br><span class="line">sudo -s vim vsftpd.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"># 是否允许匿名登录</span><br><span class="line">anonymous_enable=NO</span><br><span class="line"># 是否允许本地用户登录</span><br><span class="line">local_enable=YES</span><br><span class="line"># 是否允许本地用户对FTP服务器文件具有写权限</span><br><span class="line">write_enable=YES</span><br><span class="line"># 本地用户主目录</span><br><span class="line">local_root=/var/ftp</span><br><span class="line"># 匿名用户主目录</span><br><span class="line">anon_root=/var/ftp</span><br><span class="line"># 是否允许匿名用户上传文件，如允许，须将全局的</span><br><span class="line">write_enable=YES</span><br><span class="line">anon_upload_enable=YES</span><br><span class="line"># 是否允许匿名用户创建新文件夹</span><br><span class="line">anon_mkdir_write_enable=YES</span><br><span class="line"># 容许匿名用户除了新建和上传外的其他权限</span><br><span class="line">anon_other_write_enable=YES</span><br><span class="line"># 本地用户掩码</span><br><span class="line">local_umask=022</span><br><span class="line"># 设置匿名登入者新增或上传档案时的umask值</span><br><span class="line">anon_umask=022</span><br><span class="line"># 是否激活目录欢迎信息功能</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">xferlog_enable=YES</span><br><span class="line"># 主动模式数据传输20端口</span><br><span class="line">connect_from_port_20=NO</span><br><span class="line"># 上传下载日志</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">xferlog_file=/var/log/xferlog</span><br><span class="line">vsftpd_log_file=/var/log/vsftpd.log  </span><br><span class="line">xferlog_std_format=YES</span><br><span class="line"># 是否监听ipv4</span><br><span class="line">listen=YES</span><br><span class="line"># listen_ipv6=YES</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">tcp_wrappers=YES</span><br><span class="line"># 是否设置被动模式</span><br><span class="line">pasv_enable=YES</span><br><span class="line"># 被动模式传输使用端口</span><br><span class="line">pasv_min_port=30000</span><br><span class="line">pasv_max_port=30500</span><br><span class="line"># 被动模式返回给客户端的ip地址(服务器内网穿透时使用, 服务器外网ip)</span><br><span class="line">pasv_address=xx.xx.xx.xx</span><br><span class="line"># 设置用户访问目录，默认只允许用户自己的ftp目录</span><br><span class="line"># 需要同时设置allow_writeable_chroot，允许受限用户的写权限，不然会报错</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">chroot_local_user=YES</span><br><span class="line">chroot_list_file=/etc/vsftpd/chroot_list</span><br><span class="line">allow_writeable_chroot=YES</span><br><span class="line"># 设置虚拟用户</span><br><span class="line">guest_enable=yes</span><br><span class="line">guest_username=ftpuser</span><br><span class="line">user_config_dir=/etc/vsftpd/vuser_conf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-创建本地用户"><a href="#3-创建本地用户" class="headerlink" title="3 创建本地用户"></a>3 创建本地用户</h4><p>本地用户  不允许shell登录主机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -s  useradd  -s /sbin/nologin ftpvip</span><br><span class="line">sudo -s  useradd  -s /sbin/nologin ftpsearch</span><br></pre></td></tr></table></figure>
+<p>本地用户(虚拟用户映射本地用户)  不允许shell登录主机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s  useradd  -s /sbin/nologin ftpuser</span><br></pre></td></tr></table></figure>
+<p>用户修改相关的语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修改用户</span><br><span class="line">sudo -s usermod -s /sbin/nologin  用户名</span><br><span class="line">删除用户</span><br><span class="line">sudo -s userdel  -r  用户名</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-创建FTP虚拟用户"><a href="#4-创建FTP虚拟用户" class="headerlink" title="4 创建FTP虚拟用户"></a>4 创建FTP虚拟用户</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/vsftpd/</span><br><span class="line">sudo -s touch vuser_passwd</span><br><span class="line">sudo -s vim /etc/vsftpd/vuser_passwd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">virtual_vip        //一行对应用户名</span><br><span class="line">123456             //一行对应密码</span><br><span class="line">virtual_search</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<p> 根据虚拟用户账户文件生成虚拟用户库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s db_load -T -t hash -f /usr/local/vsftp/vuser_passwd /usr/local/vsftp/vuser_passwd.db</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-创建虚拟用户配置文件"><a href="#5-创建虚拟用户配置文件" class="headerlink" title="5 创建虚拟用户配置文件"></a>5 创建虚拟用户配置文件</h4><p>创建虚拟用户配置目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s mkdir /etc/vsftpd/vuser_conf</span><br><span class="line">sudo -s touch  virtual_vip</span><br><span class="line">sudo -s touch  virtual_search</span><br></pre></td></tr></table></figure>
+<p>新增虚拟用户配置内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -s vim /etc/vsftpd/vuser_conf/virtual_vip</span><br><span class="line">sudo -s vim /etc/vsftpd/vuser_conf/virtual_search</span><br></pre></td></tr></table></figure>
+
+
+<p>全部权限：可上传、下载、删除和改名<br>(根据需要权限自由组合)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">local_root=/var/ftp/pub</span><br><span class="line">write_enable=YES</span><br><span class="line">anon_world_readable_only=NO</span><br><span class="line">anon_upload_enable=YES</span><br><span class="line">anon_mkdir_write_enable=YES</span><br><span class="line">anon_other_write_enable=YES</span><br></pre></td></tr></table></figure>
+<h4 id="6-配置pam服务"><a href="#6-配置pam服务" class="headerlink" title="6 配置pam服务"></a>6 配置pam服务</h4><p>配置本机用户虚拟用户登录认证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s vim /etc/pam.d/vsftpd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">auth       sufficient   pam_userdb.so db=/etc/vsftpd/vuser_passwd</span><br><span class="line">account    sufficient   pam_userdb.so db=/etc/vsftpd/vuser_passwd</span><br><span class="line">session    optional     pam_keyinit.so    force revoke</span><br><span class="line">auth       required     pam_listfile.so item=user sense=deny file=/etc/vsftpd/ftpusers onerr=succeed</span><br><span class="line">auth       required     pam_shells.so</span><br><span class="line">auth       include      password-auth</span><br><span class="line">account    include      password-auth</span><br><span class="line">session    required     pam_loginuid.so</span><br><span class="line">session    include      password-auth</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-设置FTP文件夹用户权限"><a href="#7-设置FTP文件夹用户权限" class="headerlink" title="7 设置FTP文件夹用户权限"></a>7 设置FTP文件夹用户权限</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /var/ftp/</span><br><span class="line">sudo -s mkdir pub</span><br><span class="line">sudo -s mkdir vip</span><br><span class="line">sudo -s mkdir search</span><br><span class="line">sudo -s chown -R ftpuser:ftpuser /var/ftp/pub</span><br><span class="line">sudo -s chown -R ftpvip:ftpvip  /var/ftp/vip</span><br><span class="line">sudo -s chown -R ftpsearch: ftpsearch  /var/ftp/ftpsearch</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-启动vsftpd服务"><a href="#8-启动vsftpd服务" class="headerlink" title="8 启动vsftpd服务"></a>8 启动vsftpd服务</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重启vsftpd</span><br><span class="line">sudo -s systemctl vsftpd restart.service</span><br><span class="line">查看服务状态</span><br><span class="line">sudo -s systemctl status vsftpd.service</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="三、VSFTP安装文件介绍"><a href="#三、VSFTP安装文件介绍" class="headerlink" title="三、VSFTP安装文件介绍"></a>三、VSFTP安装文件介绍</h1><p>​      </p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/etc/vsftpd/vsftpd.conf</td>
+<td align="left"><li>vsftpd主配置文件</td>
+</tr>
+<tr>
+<td>/usr/sbin/vsftpd</td>
+<td align="left"><li>vsftpd主程序</td>
+</tr>
+<tr>
+<td>/home</td>
+<td align="left">本机用户文件夹</td>
+</tr>
+<tr>
+<td>/etc/pam.h/vsftpd</td>
+<td align="left"><li>pam认证文件<li>file=/etc/vsftpd/ftpusers禁止用户访问</td>
+</tr>
+<tr>
+<td>/etc/vsftpd/ftpusers</td>
+<td align="left"><li>禁止用户访问列表 <li>如果userlist_enable=YES，userlist_deny=NO，此时如果在user_list 和 ftpusers 中都有某个用户时，那么这个用户不允许访问FTP，因为ftpusers文件的优先级更高 <li>默认情况下user_list和ftpusers，这两个文件已经预设置了一些不允许访问FTP服务器的系统内部账户</td>
+</tr>
+<tr>
+<td>/etc/vsftpd/user_list</td>
+<td align="left"><li>userlist_deny=YES/NO决定 user_list 文件中的用户是否能够访问FTP服务器。<li>设置为YES，则 user_list 文件内的用户不允许访问FTP。若设置为NO，则只有user_list 文件内的用户才能访问FTP</td>
+</tr>
+<tr>
+<td>/etc/vsftpd/chroot_list</td>
+<td align="left"><li>用于指定用户列表文件，该文件控制用户可以切换到家目录的上级目录<li>chroot_list_enable=YES/NO设置是否启用chroot_list_file配置项指定的用户列表文件<li>chroot_local_user=YES/NO用于指定用户列表文件中的用户是否允许切换到上级目录<li>chroot_list_enable和chroot_local_user俩个参数搭配使用，可以控制是否启动访问上级列表文件控制用户是否能访问上级目录</td>
+</tr>
+<tr>
+<td>/var/ftp</td>
+<td align="left"><li>匿名用户主目录 同时也是设置的本机用户和虚拟用户主目录</td>
+</tr>
+<tr>
+<td>/var/log/vsftpd.log</td>
+<td align="left"><li>设置的vsftpd写入日志</td>
+</tr>
+<tr>
+<td>/var/log/xferlog</td>
+<td align="left"><li>设置vsftpd传输(上传/下载)日志</td>
+</tr>
+<tr>
+<td>/etc/vsftpd/vuser_conf</td>
+<td align="left"><li>设置虚拟用户配置文件夹</td>
+</tr>
+<tr>
+<td>/etc/vsftpd/vuser_passwd</td>
+<td align="left"><li>设置虚拟用户名/密码</td>
+</tr>
+<tr>
+<td>/etc/vsftpd/vuser_passwd.db</td>
+<td align="left"><li>设置生成的虚拟用户库</td>
+</tr>
+</tbody></table>
+<h1 id="四、VSFTP安装遇到的问题及解决方法"><a href="#四、VSFTP安装遇到的问题及解决方法" class="headerlink" title="四、VSFTP安装遇到的问题及解决方法"></a>四、VSFTP安装遇到的问题及解决方法</h1><p>vsftp安装一波三折，遇到各种非root权限问题，pam安全认证问题，外网访问问题，本机/虚拟用户无法访问问题等😅😅<br>首先必须先了解下FTP响应代码：</p>
+<ul>
+<li>110    新文件指示器上的重启标记</li>
+<li>120    服务器准备就绪的时间（分钟数）</li>
+<li>125    打开数据连接，开始传输</li>
+<li>150    打开连接</li>
+<li>200    成功</li>
+<li>202    命令没有执行</li>
+<li>211    系统状态回复</li>
+<li>212    目录状态回复</li>
+<li>213    文件状态回复</li>
+<li>214    帮助信息回复</li>
+<li>215    系统类型回复</li>
+<li>220    服务就绪</li>
+<li>221    退出网络</li>
+<li>225    打开数据连接</li>
+<li>226    结束数据连接</li>
+<li>227    进入被动模式（IP 地址、ID 端口）</li>
+<li>230    登录因特网</li>
+<li>250    文件行为完成</li>
+<li>257    路径名建立</li>
+<li>331    要求密码</li>
+<li>332    要求账号</li>
+<li>350    文件行为暂停</li>
+<li>421    服务关闭</li>
+<li>425    无法打开数据连接</li>
+<li>426    结束连接</li>
+<li>450    文件不可用</li>
+<li>451    遇到本地错误</li>
+<li>452    磁盘空间不足</li>
+<li><strong>500    无效命令</strong></li>
+<li>501    错误参数</li>
+<li>502    命令没有执行</li>
+<li>503    错误指令序列</li>
+<li>504    无效命令参数</li>
+<li><strong>530    未登录网络</strong></li>
+<li>532    存储文件需要账号</li>
+<li>550    文件不可用</li>
+<li>551    不知道的页类型</li>
+<li>552    超过存储分配</li>
+<li>553    文件名不允许</li>
+</ul>
+<h3 id="500-OOPS：config-file-not-owned-by-correct-user"><a href="#500-OOPS：config-file-not-owned-by-correct-user" class="headerlink" title="500 OOPS：config file not owned by correct user"></a>500 OOPS：config file not owned by correct user</h3><p>重启vsftpd–显示active:fail<br>sudo -s systemctl vsftpd restart.service<br>查看服务状态<br>sudo -s systemctl status vsftpd.service<br>显示报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">500</span> <span class="variable constant_">OOPS</span>：config file not owned by correct user</span><br></pre></td></tr></table></figure>
+
+<h4 id="原因：当前用户非root权限通过yum安装的vsftpd，-etc-vsftpd-vsftpd-conf配置文件权限是当前非root用户权限，但是启动命令必须用root权限才能启动，没权限真恶心"><a href="#原因：当前用户非root权限通过yum安装的vsftpd，-etc-vsftpd-vsftpd-conf配置文件权限是当前非root用户权限，但是启动命令必须用root权限才能启动，没权限真恶心" class="headerlink" title="原因：当前用户非root权限通过yum安装的vsftpd，/etc/vsftpd/vsftpd.conf配置文件权限是当前非root用户权限，但是启动命令必须用root权限才能启动，没权限真恶心~~"></a>原因：当前用户非root权限通过yum安装的vsftpd，/etc/vsftpd/vsftpd.conf配置文件权限是当前非root用户权限，但是启动命令必须用root权限才能启动，没权限真恶心~~</h4><h4 id="解决方法：修改vsftpd-conf配置文件为root权限sudo-s-chown-R-root-root-etc-vsftpd-vsftpd-conf"><a href="#解决方法：修改vsftpd-conf配置文件为root权限sudo-s-chown-R-root-root-etc-vsftpd-vsftpd-conf" class="headerlink" title="解决方法：修改vsftpd.conf配置文件为root权限sudo -s chown -R  root:root  /etc/vsftpd/vsftpd.conf"></a>解决方法：修改vsftpd.conf配置文件为root权限sudo -s chown -R  root:root  /etc/vsftpd/vsftpd.conf</h4><h3 id="Login-failed-530-Login-incorrect"><a href="#Login-failed-530-Login-incorrect" class="headerlink" title="Login failed: 530 Login incorrect"></a>Login failed: 530 Login incorrect</h3><p>重启vsftpd–显示active:success<br>sudo -s systemctl vsftpd restart.service<br>查看服务状态– 一切OK<br>sudo -s systemctl status vsftpd.service<br>ftp 内网ip–输入虚拟用户/密码显示530登录失败</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Login</span> <span class="attr">failed</span>: <span class="number">530</span> <span class="title class_">Login</span> incorrect</span><br></pre></td></tr></table></figure>
+
+<h4 id="原因：pam认证文件虚拟用户配置错误-pam认证详细可参考https-cloud-tencent-com-developer-article-1729566"><a href="#原因：pam认证文件虚拟用户配置错误-pam认证详细可参考https-cloud-tencent-com-developer-article-1729566" class="headerlink" title="原因：pam认证文件虚拟用户配置错误 pam认证详细可参考https://cloud.tencent.com/developer/article/1729566"></a>原因：pam认证文件虚拟用户配置错误 pam认证详细可参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1729566">https://cloud.tencent.com/developer/article/1729566</a></h4><h4 id="解决方法-etv-pam-d-vsftpd-认证文件中新增虚拟用户库具有充分条件的用户口令和用户权限认证"><a href="#解决方法-etv-pam-d-vsftpd-认证文件中新增虚拟用户库具有充分条件的用户口令和用户权限认证" class="headerlink" title="解决方法   /etv/pam.d/vsftpd 认证文件中新增虚拟用户库具有充分条件的用户口令和用户权限认证"></a>解决方法   /etv/pam.d/vsftpd 认证文件中新增虚拟用户库具有充分条件的用户口令和用户权限认证</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auth       sufficient   pam_userdb.<span class="property">so</span> db=<span class="regexp">/etc/</span>vsftpd/vuser_passwd            </span><br><span class="line">account    sufficient   pam_userdb.<span class="property">so</span> db=<span class="regexp">/etc/</span>vsftpd/vuser_passwd</span><br></pre></td></tr></table></figure>
+
+<p>手动添加以上俩条内容，新增虚拟用户的安全和帐户权限进行验证。<br>开头的auth是指对用户的用户名口令进行验证，开头的accout是指对用户的帐户权限进行验证。中间的的sufficient表示充分条件，一旦在这里通过了验证，那么就不需要经过下面的验证步骤。相反，如果sufficient充分条件没有通过不会立即被系统拒绝登入，用户还必须经过下面的验证审核。</p>
+<h3 id="公网无法访问，内网可以访问，浏览器输入ftp地址一直跳出登录框"><a href="#公网无法访问，内网可以访问，浏览器输入ftp地址一直跳出登录框" class="headerlink" title="公网无法访问，内网可以访问，浏览器输入ftp地址一直跳出登录框"></a>公网无法访问，内网可以访问，浏览器输入ftp地址一直跳出登录框</h3><h4 id="原因：vsftpd配置文件参数pasv-address-0-0-0-0未配置"><a href="#原因：vsftpd配置文件参数pasv-address-0-0-0-0未配置" class="headerlink" title="原因：vsftpd配置文件参数pasv_address=0.0.0.0未配置"></a>原因：vsftpd配置文件参数pasv_address=0.0.0.0未配置</h4><h4 id="解决方法-etv-vsftpd-vsftpd-conf-参数pasv-address-0-0-0-0配置公网地址pasv-address-xx-xx-xx-xx"><a href="#解决方法-etv-vsftpd-vsftpd-conf-参数pasv-address-0-0-0-0配置公网地址pasv-address-xx-xx-xx-xx" class="headerlink" title="解决方法 /etv/vsftpd/vsftpd.conf 参数pasv_address=0.0.0.0配置公网地址pasv_address=xx.xx.xx.xx"></a>解决方法 /etv/vsftpd/vsftpd.conf 参数pasv_address=0.0.0.0配置公网地址pasv_address=xx.xx.xx.xx</h4><hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>原来以为搭建FTP很简单分分钟搞定问题不大~~囧，同时工作的任务也比较多，只能空闲时间搭建，前前后后加写博客搞了将近一个星期才完全弄好，运维工作基本算都是调参的工作也真不容易！太难了，又可以继续去搬设计模式的砖了😅😅，我们不是代码的生产者，而是代码的搬运者！<br><strong>我的github主页地址 <a href="https://xdj68.github.io/">https://xdj68.github.io</a></strong>    </p>
+<hr>
+
+    </div>
+
+    
+    
+    <div class="post-widgets">
+    <div
+      class="social-share"
+      
+        data-sites="weibo,wechat,qzone,facebook,twitter,google"
+      
+      
+        data-wechat-qrcode-title="请打开微信扫一扫"
+      
+      
+    >
+    </div>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="许道杰 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="许道杰 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/FTP/" rel="tag"># FTP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/28/Hexo%E8%BF%81%E7%A7%BB%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7+nvm%E7%AE%A1%E7%90%86nodejs%E7%89%88%E6%9C%AC%E9%85%8D%E7%BD%AE/" rel="prev" title="Hexo迁移版本升级+nvm管理nodejs版本配置">
+      <i class="fa fa-chevron-left"></i> Hexo迁移版本升级+nvm管理nodejs版本配置
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AEvsftp-%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7-%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">Linux搭建配置vsftp+本地用户|虚拟用户创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81VSFTP%E7%AE%80%E4%BB%8B"><span class="nav-number">3.</span> <span class="nav-text">一、VSFTP简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81VSFTP%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85-%E9%9D%9Eroot%E6%9D%83%E9%99%90"><span class="nav-number">4.</span> <span class="nav-text">二、VSFTP服务安装(非root权限)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85vsftpd"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">1 安装vsftpd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">2 修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7"><span class="nav-number">4.0.0.3.</span> <span class="nav-text">3 创建本地用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BAFTP%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7"><span class="nav-number">4.0.0.4.</span> <span class="nav-text">4 创建FTP虚拟用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.0.0.5.</span> <span class="nav-text">5 创建虚拟用户配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E9%85%8D%E7%BD%AEpam%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.0.0.6.</span> <span class="nav-text">6 配置pam服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E8%AE%BE%E7%BD%AEFTP%E6%96%87%E4%BB%B6%E5%A4%B9%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="nav-number">4.0.0.7.</span> <span class="nav-text">7 设置FTP文件夹用户权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E5%90%AF%E5%8A%A8vsftpd%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.0.0.8.</span> <span class="nav-text">8 启动vsftpd服务</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81VSFTP%E5%AE%89%E8%A3%85%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.</span> <span class="nav-text">三、VSFTP安装文件介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81VSFTP%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">四、VSFTP安装遇到的问题及解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#500-OOPS%EF%BC%9Aconfig-file-not-owned-by-correct-user"><span class="nav-number">6.0.1.</span> <span class="nav-text">500 OOPS：config file not owned by correct user</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%EF%BC%9A%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E9%9D%9Eroot%E6%9D%83%E9%99%90%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85%E7%9A%84vsftpd%EF%BC%8C-etc-vsftpd-vsftpd-conf%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E6%98%AF%E5%BD%93%E5%89%8D%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%EF%BC%8C%E4%BD%86%E6%98%AF%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4%E5%BF%85%E9%A1%BB%E7%94%A8root%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%B2%A1%E6%9D%83%E9%99%90%E7%9C%9F%E6%81%B6%E5%BF%83"><span class="nav-number">6.0.1.1.</span> <span class="nav-text">原因：当前用户非root权限通过yum安装的vsftpd，&#x2F;etc&#x2F;vsftpd&#x2F;vsftpd.conf配置文件权限是当前非root用户权限，但是启动命令必须用root权限才能启动，没权限真恶心~~</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9A%E4%BF%AE%E6%94%B9vsftpd-conf%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%BAroot%E6%9D%83%E9%99%90sudo-s-chown-R-root-root-etc-vsftpd-vsftpd-conf"><span class="nav-number">6.0.1.2.</span> <span class="nav-text">解决方法：修改vsftpd.conf配置文件为root权限sudo -s chown -R  root:root  &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd.conf</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Login-failed-530-Login-incorrect"><span class="nav-number">6.0.2.</span> <span class="nav-text">Login failed: 530 Login incorrect</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%EF%BC%9Apam%E8%AE%A4%E8%AF%81%E6%96%87%E4%BB%B6%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF-pam%E8%AE%A4%E8%AF%81%E8%AF%A6%E7%BB%86%E5%8F%AF%E5%8F%82%E8%80%83https-cloud-tencent-com-developer-article-1729566"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">原因：pam认证文件虚拟用户配置错误 pam认证详细可参考https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1729566</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-etv-pam-d-vsftpd-%E8%AE%A4%E8%AF%81%E6%96%87%E4%BB%B6%E4%B8%AD%E6%96%B0%E5%A2%9E%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E5%BA%93%E5%85%B7%E6%9C%89%E5%85%85%E5%88%86%E6%9D%A1%E4%BB%B6%E7%9A%84%E7%94%A8%E6%88%B7%E5%8F%A3%E4%BB%A4%E5%92%8C%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81"><span class="nav-number">6.0.2.2.</span> <span class="nav-text">解决方法   &#x2F;etv&#x2F;pam.d&#x2F;vsftpd 认证文件中新增虚拟用户库具有充分条件的用户口令和用户权限认证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E7%BD%91%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%EF%BC%8C%E5%86%85%E7%BD%91%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%EF%BC%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5ftp%E5%9C%B0%E5%9D%80%E4%B8%80%E7%9B%B4%E8%B7%B3%E5%87%BA%E7%99%BB%E5%BD%95%E6%A1%86"><span class="nav-number">6.0.3.</span> <span class="nav-text">公网无法访问，内网可以访问，浏览器输入ftp地址一直跳出登录框</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%EF%BC%9Avsftpd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%82%E6%95%B0pasv-address-0-0-0-0%E6%9C%AA%E9%85%8D%E7%BD%AE"><span class="nav-number">6.0.3.1.</span> <span class="nav-text">原因：vsftpd配置文件参数pasv_address&#x3D;0.0.0.0未配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-etv-vsftpd-vsftpd-conf-%E5%8F%82%E6%95%B0pasv-address-0-0-0-0%E9%85%8D%E7%BD%AE%E5%85%AC%E7%BD%91%E5%9C%B0%E5%9D%80pasv-address-xx-xx-xx-xx"><span class="nav-number">6.0.3.2.</span> <span class="nav-text">解决方法 &#x2F;etv&#x2F;vsftpd&#x2F;vsftpd.conf 参数pasv_address&#x3D;0.0.0.0配置公网地址pasv_address&#x3D;xx.xx.xx.xx</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="许道杰"
+      src="/images/favicon.jpeg">
+  <p class="site-author-name" itemprop="name">许道杰</p>
+  <div class="site-description" itemprop="description">java,js,oracle,html</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xdj68" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xdj68" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:835923255@qq.com" title="E-Mail → mailto:835923255@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/6013910096" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;6013910096" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/xdj68" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;xdj68" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+	
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">许道杰</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/jquery-3.2.1.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'CLuTbcdzqS4Cf2yBQlHv1RH4-gzGzoHsz',
+      appKey     : 'l1KY4HxKr8urtUOLqM23Ap0R',
+      placeholder: "",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
